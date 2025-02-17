@@ -28,7 +28,7 @@
 <meta property="og:description" content="速通。">
 <meta property="og:locale" content="en_US">
 <meta property="article:published_time" content="2025-02-17T10:02:55.000Z">
-<meta property="article:modified_time" content="2025-02-17T11:55:20.886Z">
+<meta property="article:modified_time" content="2025-02-17T12:06:37.367Z">
 <meta property="article:author" content="Xuanyu Chu">
 <meta property="article:tag" content="AI">
 <meta property="article:tag" content="ML">
@@ -106,7 +106,7 @@
       <div class="sidebar-panel-container">
         <!--noindex-->
         <div class="post-toc-wrap sidebar-panel">
-            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E4%BB%BB%E5%8A%A1%E6%94%BB%E7%95%A5"><span class="nav-number">1.</span> <span class="nav-text"> 机器学习任务攻略</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#optimization-issue"><span class="nav-number">1.1.</span> <span class="nav-text"> Optimization Issue</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#overfitting"><span class="nav-number">1.2.</span> <span class="nav-text"> Overfitting</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#cross-validation"><span class="nav-number">1.3.</span> <span class="nav-text"> Cross Validation</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#n-fold-cross-validation"><span class="nav-number">1.4.</span> <span class="nav-text"> N-fold Cross Validation</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#mismatch"><span class="nav-number">1.5.</span> <span class="nav-text"> Mismatch</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#when-gradient-is-small"><span class="nav-number">2.</span> <span class="nav-text"> When Gradient is Small</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%A6%82%E4%BD%95%E5%88%A4%E6%96%AD"><span class="nav-number">2.1.</span> <span class="nav-text"> 如何判断？</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#saddle-point-vs-local-minima"><span class="nav-number">2.2.</span> <span class="nav-text"> Saddle Point v.s. Local Minima</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#batch-momentum"><span class="nav-number">3.</span> <span class="nav-text"> Batch &amp; Momentum</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#batch"><span class="nav-number">3.1.</span> <span class="nav-text"> Batch</span></a></li></ol></li></ol></div>
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E4%BB%BB%E5%8A%A1%E6%94%BB%E7%95%A5"><span class="nav-number">1.</span> <span class="nav-text"> 机器学习任务攻略</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#optimization-issue"><span class="nav-number">1.1.</span> <span class="nav-text"> Optimization Issue</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#overfitting"><span class="nav-number">1.2.</span> <span class="nav-text"> Overfitting</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#cross-validation"><span class="nav-number">1.3.</span> <span class="nav-text"> Cross Validation</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#n-fold-cross-validation"><span class="nav-number">1.4.</span> <span class="nav-text"> N-fold Cross Validation</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#mismatch"><span class="nav-number">1.5.</span> <span class="nav-text"> Mismatch</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#when-gradient-is-small"><span class="nav-number">2.</span> <span class="nav-text"> When Gradient is Small</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%A6%82%E4%BD%95%E5%88%A4%E6%96%AD"><span class="nav-number">2.1.</span> <span class="nav-text"> 如何判断？</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#saddle-point-vs-local-minima"><span class="nav-number">2.2.</span> <span class="nav-text"> Saddle Point v.s. Local Minima</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#batch-momentum"><span class="nav-number">3.</span> <span class="nav-text"> Batch &amp; Momentum</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#batch"><span class="nav-number">3.1.</span> <span class="nav-text"> Batch</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#momentum"><span class="nav-number">3.2.</span> <span class="nav-text"> Momentum</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#error-surface-is-rugged"><span class="nav-number">4.</span> <span class="nav-text"> Error Surface is Rugged</span></a></li></ol></div>
         </div>
         <!--/noindex-->
 
@@ -185,7 +185,7 @@
       <span class="post-meta-item-text">Posted on</span>
       
 
-      <time title="Created: 2025-02-17 18:02:55 / Modified: 19:55:20" itemprop="dateCreated datePublished" datetime="2025-02-17T18:02:55+08:00">2025-02-17</time>
+      <time title="Created: 2025-02-17 18:02:55 / Modified: 20:06:37" itemprop="dateCreated datePublished" datetime="2025-02-17T18:02:55+08:00">2025-02-17</time>
     </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -271,6 +271,21 @@
 <li>Large batch size does <strong>not</strong> require longer time to compute gradient (取决于 GPU)</li>
 <li>Smaller batch requires longer time for one epoch (longer time for seeing all data once)</li>
 </ul>
+<p>大的 batch size 可能会导致 Optimization fail.</p>
+<ul>
+<li>Smaller batch size has better performance</li>
+<li>“Noisy” update is better for training (wow!)</li>
+<li>Small batch is better on testing data (!)。一个解释：Minima 有 Flat Minima 和 Sharp Minima (Flat 指更“圆润”)，于是在 Testing 的时候 Loss 可能和 Training loss 有偏差，在 Flat Minima 附近移动的话变化就比较少。</li>
+</ul>
+<h2 id="momentum"><a class="markdownIt-Anchor" href="#momentum"></a> Momentum</h2>
+<p>动量。</p>
+<p class='katex-block katex-error' title='ParseError: KaTeX parse error: No such environment: equation at position 7: \begin{̲e̲q̲u̲a̲t̲i̲o̲n̲}̲
+  m^i = \lambd…'>\begin{equation}
+  m^i = \lambda m^{i-1}- \eta g^{i-1}
+\end{equation}
+</p>
+<h1 id="error-surface-is-rugged"><a class="markdownIt-Anchor" href="#error-surface-is-rugged"></a> Error Surface is Rugged</h1>
+<p>Training Stuck $\neq $ Small Gradient</p>
 
     </div>
 
