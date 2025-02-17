@@ -28,7 +28,7 @@
 <meta property="og:description" content="速通。">
 <meta property="og:locale" content="en_US">
 <meta property="article:published_time" content="2025-02-17T10:02:55.000Z">
-<meta property="article:modified_time" content="2025-02-17T10:26:33.915Z">
+<meta property="article:modified_time" content="2025-02-17T10:51:09.539Z">
 <meta property="article:author" content="Xuanyu Chu">
 <meta property="article:tag" content="AI">
 <meta property="article:tag" content="ML">
@@ -106,7 +106,7 @@
       <div class="sidebar-panel-container">
         <!--noindex-->
         <div class="post-toc-wrap sidebar-panel">
-            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E4%BB%BB%E5%8A%A1%E6%94%BB%E7%95%A5"><span class="nav-number">1.</span> <span class="nav-text"> 机器学习任务攻略</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#optimization-issue"><span class="nav-number">1.1.</span> <span class="nav-text"> Optimization Issue</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#overfitting"><span class="nav-number">1.2.</span> <span class="nav-text"> Overfitting</span></a></li></ol></li></ol></div>
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E4%BB%BB%E5%8A%A1%E6%94%BB%E7%95%A5"><span class="nav-number">1.</span> <span class="nav-text"> 机器学习任务攻略</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#optimization-issue"><span class="nav-number">1.1.</span> <span class="nav-text"> Optimization Issue</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#overfitting"><span class="nav-number">1.2.</span> <span class="nav-text"> Overfitting</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#cross-validation"><span class="nav-number">1.3.</span> <span class="nav-text"> Cross Validation</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#n-fold-cross-validation"><span class="nav-number">1.4.</span> <span class="nav-text"> N-fold Cross Validation</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#mismatch"><span class="nav-number">1.5.</span> <span class="nav-text"> Mismatch</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#when-gradient-is-small"><span class="nav-number">2.</span> <span class="nav-text"> When Gradient is Small</span></a></li></ol></div>
         </div>
         <!--/noindex-->
 
@@ -185,7 +185,7 @@
       <span class="post-meta-item-text">Posted on</span>
       
 
-      <time title="Created: 2025-02-17 18:02:55 / Modified: 18:26:33" itemprop="dateCreated datePublished" datetime="2025-02-17T18:02:55+08:00">2025-02-17</time>
+      <time title="Created: 2025-02-17 18:02:55 / Modified: 18:51:09" itemprop="dateCreated datePublished" datetime="2025-02-17T18:02:55+08:00">2025-02-17</time>
     </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -223,8 +223,25 @@
 <ul>
 <li>More training data.</li>
 <li>Data augmentation.</li>
-<li>给 model 一些限制：Less parameters, sharing parameters.</li>
+<li>给 model 一些限制 (太多限制会导致 model bias: trade-off)：
+<ol>
+<li>Less parameters, sharing parameters.</li>
+<li>Less features</li>
+<li>Early stopping</li>
+<li>Regularization</li>
+<li>Dropout</li>
+</ol>
+</li>
 </ul>
+<h2 id="cross-validation"><a class="markdownIt-Anchor" href="#cross-validation"></a> Cross Validation</h2>
+<p>把 Training Set 分成 Training Set 和 Validation Set.</p>
+<h2 id="n-fold-cross-validation"><a class="markdownIt-Anchor" href="#n-fold-cross-validation"></a> N-fold Cross Validation</h2>
+<p>分成 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>N</mi></mrow><annotation encoding="application/x-tex">N</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.68333em;vertical-align:0em;"></span><span class="mord mathnormal" style="margin-right:0.10903em;">N</span></span></span></span> 份，分别取 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>N</mi></mrow><annotation encoding="application/x-tex">N</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.68333em;vertical-align:0em;"></span><span class="mord mathnormal" style="margin-right:0.10903em;">N</span></span></span></span> 组为 Validation Set，其他 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>N</mi><mo>−</mo><mn>1</mn></mrow><annotation encoding="application/x-tex">N-1</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.76666em;vertical-align:-0.08333em;"></span><span class="mord mathnormal" style="margin-right:0.10903em;">N</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">−</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:0.64444em;vertical-align:0em;"></span><span class="mord">1</span></span></span></span> 组为 Training Set 跑 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>N</mi></mrow><annotation encoding="application/x-tex">N</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.68333em;vertical-align:0em;"></span><span class="mord mathnormal" style="margin-right:0.10903em;">N</span></span></span></span> 次。</p>
+<p>避免了 Validation Set 选的不好的情况。</p>
+<h2 id="mismatch"><a class="markdownIt-Anchor" href="#mismatch"></a> Mismatch</h2>
+<p>Training data and testing data have different distribution.</p>
+<h1 id="when-gradient-is-small"><a class="markdownIt-Anchor" href="#when-gradient-is-small"></a> When Gradient is Small</h1>
+<p>Local minima</p>
 
     </div>
 
