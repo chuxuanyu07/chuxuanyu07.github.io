@@ -1,0 +1,379 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222"><meta name="generator" content="Hexo 7.3.0">
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/my_favicon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/my_favicon-32x32.ico">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/my_favicon-16x16.ico">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" integrity="sha256-dABdfBfUoC8vJUBOwGVdm8L9qlMWaHTIfXt+7GnZCIo=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"example.com","root":"/","images":"/images","scheme":"Muse","darkmode":false,"version":"8.22.0","exturl":false,"sidebar":{"position":"left","width_expanded":320,"width_dual_column":240,"display":"post","padding":18,"offset":12},"hljswrap":true,"copycode":{"enable":false,"style":null},"fold":{"enable":false,"height":500},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"duration":200,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"i18n":{"placeholder":"Searching...","empty":"We didn't find any results for the search: ${query}","hits_time":"${hits} results found in ${time} ms","hits":"${hits} results found"}}</script><script src="/js/config.js"></script>
+
+    <meta name="description" content="貌似这题代码可以很短欸  但是我自作孽写线段树  题目链接：P2672 推销员 不过为什么会写线段树呢，其实是因为我看了标签。 申明：本题解较适合喜欢使用数据结构的 OIersOIersOIers，并且码量较其他方法来说比较大">
+<meta property="og:type" content="article">
+<meta property="og:title" content="【题解】Luogu-P2672 推销员">
+<meta property="og:url" content="http://example.com/OI/%E3%80%90%E9%A2%98%E8%A7%A3%E3%80%91Luogu-P2672-%E6%8E%A8%E9%94%80%E5%91%98/index.html">
+<meta property="og:site_name" content="CXY07&#39;s Blog">
+<meta property="og:description" content="貌似这题代码可以很短欸  但是我自作孽写线段树  题目链接：P2672 推销员 不过为什么会写线段树呢，其实是因为我看了标签。 申明：本题解较适合喜欢使用数据结构的 OIersOIersOIers，并且码量较其他方法来说比较大">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2019-06-28T14:10:00.000Z">
+<meta property="article:modified_time" content="2025-03-10T01:04:21.275Z">
+<meta property="article:author" content="Xuanyu Chu">
+<meta property="article:tag" content="OI-Solutions">
+<meta name="twitter:card" content="summary">
+
+
+<link rel="canonical" href="http://example.com/OI/%E3%80%90%E9%A2%98%E8%A7%A3%E3%80%91Luogu-P2672-%E6%8E%A8%E9%94%80%E5%91%98/">
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"en","comments":true,"permalink":"http://example.com/OI/%E3%80%90%E9%A2%98%E8%A7%A3%E3%80%91Luogu-P2672-%E6%8E%A8%E9%94%80%E5%91%98/","path":"OI/【题解】Luogu-P2672-推销员/","title":"【题解】Luogu-P2672 推销员"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>【题解】Luogu-P2672 推销员 | CXY07's Blog</title>
+  
+
+
+
+
+
+
+
+
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <div class="column">
+      <header class="header" itemscope itemtype="http://schema.org/WPHeader"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="Toggle navigation bar" role="button">
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <p class="site-title">CXY07's Blog</p>
+      <i class="logo-line"></i>
+    </a>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger" aria-label="Search" role="button">
+    </div>
+  </div>
+</div>
+
+
+
+
+
+
+
+</header>
+        
+  
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          Table of Contents
+        </li>
+        <li class="sidebar-nav-overview">
+          Overview
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E8%B2%8C%E4%BC%BC%E8%BF%99%E9%A2%98%E4%BB%A3%E7%A0%81%E5%8F%AF%E4%BB%A5%E5%BE%88%E7%9F%AD%E6%AC%B8"><span class="nav-number">1.</span> <span class="nav-text"> 貌似这题代码可以很短欸</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E4%BD%86%E6%98%AF%E6%88%91%E8%87%AA%E4%BD%9C%E5%AD%BD%E5%86%99%E7%BA%BF%E6%AE%B5%E6%A0%91"><span class="nav-number">2.</span> <span class="nav-text"> 但是我自作孽写线段树</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E9%A2%98%E7%9B%AE%E9%93%BE%E6%8E%A5p2672-%E6%8E%A8%E9%94%80%E5%91%98"><span class="nav-number">2.1.</span> <span class="nav-text"> 题目链接：P2672 推销员</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%BA%BF%E6%AE%B5%E6%A0%91"><span class="nav-number">2.1.1.</span> <span class="nav-text"> 线段树！</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E9%93%BE%E8%A1%A8"><span class="nav-number">2.1.2.</span> <span class="nav-text"> 链表！</span></a></li></ol></li></ol></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">Xuanyu Chu</p>
+  <div class="site-description" itemprop="description"></div>
+</div>
+<div class="site-state-wrap animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        <a href="/archives/">
+          <span class="site-state-item-count">11</span>
+          <span class="site-state-item-name">posts</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+        <span class="site-state-item-count">3</span>
+        <span class="site-state-item-name">categories</span>
+      </div>
+      <div class="site-state-item site-state-tags">
+        <span class="site-state-item-count">6</span>
+        <span class="site-state-item-name">tags</span>
+      </div>
+  </nav>
+</div>
+
+        </div>
+      </div>
+    </div>
+
+    
+  </aside>
+
+
+    </div>
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="en">
+    <link itemprop="mainEntityOfPage" href="http://example.com/OI/%E3%80%90%E9%A2%98%E8%A7%A3%E3%80%91Luogu-P2672-%E6%8E%A8%E9%94%80%E5%91%98/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Xuanyu Chu">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="CXY07's Blog">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="【题解】Luogu-P2672 推销员 | CXY07's Blog">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          【题解】Luogu-P2672 推销员
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">Posted on</span>
+
+      <time title="Created: 2019-06-28 22:10:00" itemprop="dateCreated datePublished" datetime="2019-06-28T22:10:00+08:00">2019-06-28</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">Edited on</span>
+      <time title="Modified: 2025-03-10 09:04:21" itemprop="dateModified" datetime="2025-03-10T09:04:21+08:00">2025-03-10</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">In</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/OI/" itemprop="url" rel="index"><span itemprop="name">OI</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody"><h1 id="貌似这题代码可以很短欸"><a class="markdownIt-Anchor" href="#貌似这题代码可以很短欸"></a> 貌似这题代码可以很短欸</h1>
+<h1 id="但是我自作孽写线段树"><a class="markdownIt-Anchor" href="#但是我自作孽写线段树"></a> 但是我自作孽写线段树</h1>
+<h2 id="题目链接p2672-推销员"><a class="markdownIt-Anchor" href="#题目链接p2672-推销员"></a> 题目链接：<a target="_blank" rel="noopener" href="https://www.luogu.org/problemnew/show/P2672">P2672 推销员</a></h2>
+<p>不过为什么会写线段树呢，<s>其实是因为我看了标签</s>。</p>
+<p>申明：本题解较适合喜欢使用数据结构的 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>O</mi><mi>I</mi><mi>e</mi><mi>r</mi><mi>s</mi></mrow><annotation encoding="application/x-tex">OIers</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.68333em;vertical-align:0em;"></span><span class="mord mathnormal" style="margin-right:0.02778em;">O</span><span class="mord mathnormal" style="margin-right:0.07847em;">I</span><span class="mord mathnormal">e</span><span class="mord mathnormal" style="margin-right:0.02778em;">r</span><span class="mord mathnormal">s</span></span></span></span>，并且码量较其他方法来说比较大</p>
+<span id="more"></span>
+<hr />
+<p>进入正题</p>
+<p>可以证明每一次选择都基于上一次的选择，这个结论已经有巨佬详细地证明了，这里就不再详细说明了 <s>或者说是我不会</s></p>
+<p>这道题我选择倒过来做，大致思路：</p>
+<ol>
+<li>
+<p><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>S</mi></mrow><annotation encoding="application/x-tex">S</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.68333em;vertical-align:0em;"></span><span class="mord mathnormal" style="margin-right:0.05764em;">S</span></span></span></span> 值是从小到大排好序的（所以下文中下标更大即意味着 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>S</mi></mrow><annotation encoding="application/x-tex">S</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.68333em;vertical-align:0em;"></span><span class="mord mathnormal" style="margin-right:0.05764em;">S</span></span></span></span> 值更大），可以不用管。</p>
+</li>
+<li>
+<p>当每一个用户的家都需要去的时候，也就是 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>X</mi><mo>=</mo><mi>N</mi></mrow><annotation encoding="application/x-tex">X = N</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.68333em;vertical-align:0em;"></span><span class="mord mathnormal" style="margin-right:0.07847em;">X</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:0.68333em;vertical-align:0em;"></span><span class="mord mathnormal" style="margin-right:0.10903em;">N</span></span></span></span> 时，答案显然是所有 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>A</mi></mrow><annotation encoding="application/x-tex">A</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.68333em;vertical-align:0em;"></span><span class="mord mathnormal">A</span></span></span></span> 值的和加上 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>S</mi><mi>m</mi><mi>a</mi><mi>x</mi><mo>∗</mo><mn>2</mn></mrow><annotation encoding="application/x-tex">Smax * 2</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.68333em;vertical-align:0em;"></span><span class="mord mathnormal" style="margin-right:0.05764em;">S</span><span class="mord mathnormal">m</span><span class="mord mathnormal">a</span><span class="mord mathnormal">x</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">∗</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:0.64444em;vertical-align:0em;"></span><span class="mord">2</span></span></span></span>。又因为<em>每一次的选择都基于上一次</em>，也就是<em>每一次选择都可以推导出上一次选择</em>。</p>
+</li>
+<li>
+<p>我们在求每一个状态的时候，关注的只有目前 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>A</mi></mrow><annotation encoding="application/x-tex">A</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.68333em;vertical-align:0em;"></span><span class="mord mathnormal">A</span></span></span></span> 值的和、目前选择的点中 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>S</mi></mrow><annotation encoding="application/x-tex">S</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.68333em;vertical-align:0em;"></span><span class="mord mathnormal" style="margin-right:0.05764em;">S</span></span></span></span> 的最大值 以及 当 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>S</mi></mrow><annotation encoding="application/x-tex">S</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.68333em;vertical-align:0em;"></span><span class="mord mathnormal" style="margin-right:0.05764em;">S</span></span></span></span> 最大时点的下标。又因为 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>A</mi></mrow><annotation encoding="application/x-tex">A</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.68333em;vertical-align:0em;"></span><span class="mord mathnormal">A</span></span></span></span> 值的和可以由上一个答案与目前选择的点得到，所以可以不维护。</p>
+</li>
+</ol>
+<p>那么，我们只需要逐步删除选中的点，并保证局部最优。这个答案一定就是所求。</p>
+<hr />
+<p>以下用 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>l</mi></mrow><annotation encoding="application/x-tex">l</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.69444em;vertical-align:0em;"></span><span class="mord mathnormal" style="margin-right:0.01968em;">l</span></span></span></span>、<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>r</mi></mrow><annotation encoding="application/x-tex">r</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.43056em;vertical-align:0em;"></span><span class="mord mathnormal" style="margin-right:0.02778em;">r</span></span></span></span>表示 目前选中的点中下标最小的点的下标 和 目前选中的点中下标最大的点的下标（因此 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>l</mi></mrow><annotation encoding="application/x-tex">l</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.69444em;vertical-align:0em;"></span><span class="mord mathnormal" style="margin-right:0.01968em;">l</span></span></span></span>，<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>r</mi></mrow><annotation encoding="application/x-tex">r</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.43056em;vertical-align:0em;"></span><span class="mord mathnormal" style="margin-right:0.02778em;">r</span></span></span></span> 之间有可能会有没有选中的点），<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>d</mi><mi>i</mi><mi>s</mi></mrow><annotation encoding="application/x-tex">dis</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.69444em;vertical-align:0em;"></span><span class="mord mathnormal">d</span><span class="mord mathnormal">i</span><span class="mord mathnormal">s</span></span></span></span> 表示 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>r</mi></mrow><annotation encoding="application/x-tex">r</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.43056em;vertical-align:0em;"></span><span class="mord mathnormal" style="margin-right:0.02778em;">r</span></span></span></span> 点的 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>S</mi></mrow><annotation encoding="application/x-tex">S</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.68333em;vertical-align:0em;"></span><span class="mord mathnormal" style="margin-right:0.05764em;">S</span></span></span></span> 值的两倍（即来回距离）</p>
+<p>这样的话，对于每一个状态，我们都有两种选择来指向两个不同的上一状态，在中间取最优值：</p>
+<ol>
+<li>
+<p>删除 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>l</mi></mrow><annotation encoding="application/x-tex">l</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.69444em;vertical-align:0em;"></span><span class="mord mathnormal" style="margin-right:0.01968em;">l</span></span></span></span> ~ <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>r</mi><mo>−</mo><mn>1</mn></mrow><annotation encoding="application/x-tex">r - 1</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.66666em;vertical-align:-0.08333em;"></span><span class="mord mathnormal" style="margin-right:0.02778em;">r</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">−</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:0.64444em;vertical-align:0em;"></span><span class="mord">1</span></span></span></span> 中 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>A</mi></mrow><annotation encoding="application/x-tex">A</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.68333em;vertical-align:0em;"></span><span class="mord mathnormal">A</span></span></span></span> 值最小的点 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>v</mi></mrow><annotation encoding="application/x-tex">v</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.43056em;vertical-align:0em;"></span><span class="mord mathnormal" style="margin-right:0.03588em;">v</span></span></span></span>，这样会尽量让答案更大，此时答案只需减去 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>A</mi><mi>v</mi></msub></mrow><annotation encoding="application/x-tex">A_v</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.83333em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord mathnormal">A</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.151392em;"><span style="top:-2.5500000000000003em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight" style="margin-right:0.03588em;">v</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span></span> 即可</p>
+</li>
+<li>
+<p>删除 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>r</mi></mrow><annotation encoding="application/x-tex">r</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.43056em;vertical-align:0em;"></span><span class="mord mathnormal" style="margin-right:0.02778em;">r</span></span></span></span>，这会导致右端点的变化（左移），因此 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>d</mi><mi>i</mi><mi>s</mi></mrow><annotation encoding="application/x-tex">dis</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.69444em;vertical-align:0em;"></span><span class="mord mathnormal">d</span><span class="mord mathnormal">i</span><span class="mord mathnormal">s</span></span></span></span> 也会发生改变，同时，答案会减去 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>A</mi><mi>r</mi></msub></mrow><annotation encoding="application/x-tex">A_r</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.83333em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord mathnormal">A</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.151392em;"><span style="top:-2.5500000000000003em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight" style="margin-right:0.02778em;">r</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span></span></p>
+</li>
+</ol>
+<p>最后两个方案的答案取 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>m</mi><mi>a</mi><mi>x</mi></mrow><annotation encoding="application/x-tex">max</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.43056em;vertical-align:0em;"></span><span class="mord mathnormal">m</span><span class="mord mathnormal">a</span><span class="mord mathnormal">x</span></span></span></span> 并且更新状态即可。</p>
+<hr />
+<p>所以我们的线段树用在哪里呢。。。<s>终于讲到正题了</s></p>
+<p>在方案 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>1</mn></mrow><annotation encoding="application/x-tex">1</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.64444em;vertical-align:0em;"></span><span class="mord">1</span></span></span></span> 中，我们好像要求 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>l</mi></mrow><annotation encoding="application/x-tex">l</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.69444em;vertical-align:0em;"></span><span class="mord mathnormal" style="margin-right:0.01968em;">l</span></span></span></span> ~ <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>r</mi><mo>−</mo><mn>1</mn></mrow><annotation encoding="application/x-tex">r - 1</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.66666em;vertical-align:-0.08333em;"></span><span class="mord mathnormal" style="margin-right:0.02778em;">r</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">−</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:0.64444em;vertical-align:0em;"></span><span class="mord">1</span></span></span></span> 中 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>A</mi></mrow><annotation encoding="application/x-tex">A</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.68333em;vertical-align:0em;"></span><span class="mord mathnormal">A</span></span></span></span> 的 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>m</mi><mi>i</mi><mi>n</mi></mrow><annotation encoding="application/x-tex">min</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.65952em;vertical-align:0em;"></span><span class="mord mathnormal">m</span><span class="mord mathnormal">i</span><span class="mord mathnormal">n</span></span></span></span> 值和它的下标？</p>
+<h3 id="线段树"><a class="markdownIt-Anchor" href="#线段树"></a> 线段树！</h3>
+<p>是的，线段树就用在这里 <s>也只用在这里</s></p>
+<p>所以我们的线段树就只需要维护区间最小值和区间最小值下标即可，加一个单点修改</p>
+<p>但是当有两个点的值均为区间最小，那我们的下标应该取哪一个呢？</p>
+<p>显然是下标更小的那一个，因为这样可以使留下来的点的 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>S</mi></mrow><annotation encoding="application/x-tex">S</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.68333em;vertical-align:0em;"></span><span class="mord mathnormal" style="margin-right:0.05764em;">S</span></span></span></span> 更大， <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>d</mi><mi>i</mi><mi>s</mi></mrow><annotation encoding="application/x-tex">dis</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.69444em;vertical-align:0em;"></span><span class="mord mathnormal">d</span><span class="mord mathnormal">i</span><span class="mord mathnormal">s</span></span></span></span> 更大</p>
+<p>而删除一个点之后，我们应该把其 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>A</mi></mrow><annotation encoding="application/x-tex">A</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.68333em;vertical-align:0em;"></span><span class="mord mathnormal">A</span></span></span></span> 值变成 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>I</mi><mi>N</mi><mi>F</mi></mrow><annotation encoding="application/x-tex">INF</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.68333em;vertical-align:0em;"></span><span class="mord mathnormal" style="margin-right:0.07847em;">I</span><span class="mord mathnormal" style="margin-right:0.10903em;">N</span><span class="mord mathnormal" style="margin-right:0.13889em;">F</span></span></span></span>，这样就不会取到了。但这个操作只需要在方案 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>1</mn></mrow><annotation encoding="application/x-tex">1</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.64444em;vertical-align:0em;"></span><span class="mord">1</span></span></span></span> 更优的时候进行，因为在方案 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>2</mn></mrow><annotation encoding="application/x-tex">2</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.64444em;vertical-align:0em;"></span><span class="mord">2</span></span></span></span> 中，我们向左更新了 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>r</mi></mrow><annotation encoding="application/x-tex">r</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.43056em;vertical-align:0em;"></span><span class="mord mathnormal" style="margin-right:0.02778em;">r</span></span></span></span> 的值，又所有的线段树操作都会在 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>l</mi></mrow><annotation encoding="application/x-tex">l</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.69444em;vertical-align:0em;"></span><span class="mord mathnormal" style="margin-right:0.01968em;">l</span></span></span></span> ~ <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>r</mi><mo>−</mo><mn>1</mn></mrow><annotation encoding="application/x-tex">r - 1</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.66666em;vertical-align:-0.08333em;"></span><span class="mord mathnormal" style="margin-right:0.02778em;">r</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">−</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:0.64444em;vertical-align:0em;"></span><span class="mord">1</span></span></span></span> 中进行，所以根本就不会再得到之前的 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>r</mi></mrow><annotation encoding="application/x-tex">r</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.43056em;vertical-align:0em;"></span><span class="mord mathnormal" style="margin-right:0.02778em;">r</span></span></span></span> 点了</p>
+<hr />
+<p>而当我们选择了方案 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>1</mn></mrow><annotation encoding="application/x-tex">1</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.64444em;vertical-align:0em;"></span><span class="mord">1</span></span></span></span> ，删除 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>r</mi></mrow><annotation encoding="application/x-tex">r</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.43056em;vertical-align:0em;"></span><span class="mord mathnormal" style="margin-right:0.02778em;">r</span></span></span></span> 后，哪个点来“接替” <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>r</mi></mrow><annotation encoding="application/x-tex">r</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.43056em;vertical-align:0em;"></span><span class="mord mathnormal" style="margin-right:0.02778em;">r</span></span></span></span> 的位置呢？显然不能是 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>r</mi></mrow><annotation encoding="application/x-tex">r</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.43056em;vertical-align:0em;"></span><span class="mord mathnormal" style="margin-right:0.02778em;">r</span></span></span></span> 上一个点，因为它或许没有被选中，如果选中它，则违背了题目中 “不走多余的路的前提”</p>
+<p>所以我们还需要维护选中的点中每一个点的前一个点 <s>绕口令</s></p>
+<h3 id="链表"><a class="markdownIt-Anchor" href="#链表"></a> 链表！</h3>
+<p>维护每个点的上一个节点即可</p>
+<hr />
+<p>好的问题解决了 <s>看起来很简单的样子</s></p>
+<p>还是分几个部分讲解好了</p>
+<hr />
+<p>变量声明</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">define</span> pii pair<span class="string">&lt;int,int&gt;</span><span class="comment">//这里用pair来存区间min值和min值下标</span></span></span><br><span class="line"></span><br><span class="line"><span class="type">const</span> <span class="type">int</span> MAXN = <span class="number">1e5</span> + <span class="number">10</span>;</span><br><span class="line"><span class="type">const</span> <span class="type">int</span> INF = <span class="number">1e9</span>;</span><br><span class="line"></span><br><span class="line"><span class="type">int</span> n,pre[MAXN],nxt[MAXN];<span class="comment">//pre、nxt：链表</span></span><br><span class="line"><span class="type">int</span> seg[MAXN &lt;&lt; <span class="number">2</span>],p[MAXN &lt;&lt; <span class="number">2</span>];<span class="comment">//seg：线段树区间min，p：线段树区间min下标</span></span><br><span class="line"><span class="type">int</span> ans[MAXN],l,r;<span class="comment">//ans：x为不同数值时的答案数组</span></span><br></pre></td></tr></table></figure>
+<p>还有一个结构体</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">struct</span> <span class="title class_">house</span> &#123;</span><br><span class="line">    <span class="type">int</span> a,s;</span><br><span class="line">    <span class="type">bool</span> <span class="keyword">operator</span> &lt; (<span class="type">const</span> house &amp;b) <span class="type">const</span> &#123;<span class="keyword">return</span> a &lt; b.a;&#125;</span><br><span class="line">&#125; node[MAXN];</span><br></pre></td></tr></table></figure>
+<p>跟题目中的一样</p>
+<hr />
+<p>链表</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="type">void</span> <span class="title">Delete</span><span class="params">(<span class="type">int</span> pos)</span> </span>&#123;</span><br><span class="line">    pre[nxt[pos]] = pre[pos];</span><br><span class="line">    nxt[pre[pos]] = nxt[pos];</span><br><span class="line">&#125;<span class="comment">//这是一个极其简单的删除节点函数。。。</span></span><br></pre></td></tr></table></figure>
+<p>没啥讲的</p>
+<hr />
+<p>线段树</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">define</span> l ll<span class="comment">//懒得换变量名了，就define一下</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">define</span> r rr<span class="comment">//到时候会undef</span></span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">void</span> <span class="title">pushup</span><span class="params">(<span class="type">int</span> root)</span> </span>&#123;<span class="comment">//更新</span></span><br><span class="line">    <span class="keyword">if</span>(seg[root &lt;&lt; <span class="number">1</span> | <span class="number">1</span>] &lt; seg[root &lt;&lt; <span class="number">1</span>]) &#123;<span class="comment">//如果右子树更优</span></span><br><span class="line">        seg[root] = seg[root &lt;&lt; <span class="number">1</span> | <span class="number">1</span>];<span class="comment">//只能存右子树的答案了</span></span><br><span class="line">        p[root] = p[root &lt;&lt; <span class="number">1</span> | <span class="number">1</span>];</span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">        seg[root] = seg[root &lt;&lt; <span class="number">1</span>];<span class="comment">//否则存左子树，这样可以让下标尽量小</span></span><br><span class="line">        p[root] = p[root &lt;&lt; <span class="number">1</span>];</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">void</span> <span class="title">build</span><span class="params">(<span class="type">int</span> root,<span class="type">int</span> l,<span class="type">int</span> r)</span> </span>&#123;<span class="comment">//简单的建树</span></span><br><span class="line">    <span class="keyword">if</span>(l == r) &#123;</span><br><span class="line">        seg[root] = node[l].a;</span><br><span class="line">        p[root] = l;</span><br><span class="line">        <span class="keyword">return</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="type">int</span> mid = (l + r) &gt;&gt; <span class="number">1</span>;</span><br><span class="line">    <span class="built_in">build</span>(root &lt;&lt; <span class="number">1</span>,l,mid);</span><br><span class="line">    <span class="built_in">build</span>(root &lt;&lt; <span class="number">1</span> | <span class="number">1</span>,mid + <span class="number">1</span>,r);</span><br><span class="line">    <span class="built_in">pushup</span>(root);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">void</span> <span class="title">update</span><span class="params">(<span class="type">int</span> root,<span class="type">int</span> l,<span class="type">int</span> r,<span class="type">int</span> pos,<span class="type">int</span> val)</span> </span>&#123;<span class="comment">//简单的更新</span></span><br><span class="line">    <span class="keyword">if</span>(l == r &amp;&amp; l == pos) &#123;</span><br><span class="line">        seg[root] = val;</span><br><span class="line">        <span class="keyword">return</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="type">int</span> mid = (l + r) &gt;&gt; <span class="number">1</span>;</span><br><span class="line">    <span class="keyword">if</span>(pos &lt;= mid) <span class="built_in">update</span>(root &lt;&lt; <span class="number">1</span>,l,mid,pos,val);</span><br><span class="line">    <span class="keyword">else</span> <span class="built_in">update</span>(root &lt;&lt; <span class="number">1</span> | <span class="number">1</span>,mid + <span class="number">1</span>,r,pos,val);</span><br><span class="line">    <span class="built_in">pushup</span>(root);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function">pii <span class="title">getmin</span><span class="params">(pii &amp;a,pii b)</span> </span>&#123;<span class="comment">//类似于min函数，用来找两个pii中最小值较小的那个（即当前的返回值）</span></span><br><span class="line">    <span class="keyword">if</span>(b.first &lt; a.first) <span class="built_in">swap</span>(a,b);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function">pii <span class="title">query</span><span class="params">(<span class="type">int</span> root,<span class="type">int</span> l,<span class="type">int</span> r,<span class="type">int</span> L,<span class="type">int</span> R)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">if</span>(L &lt;= l &amp;&amp; r &lt;= R) <span class="keyword">return</span> <span class="built_in">make_pair</span>(seg[root],p[root]);</span><br><span class="line">    <span class="type">int</span> mid = (l + r) &gt;&gt; <span class="number">1</span>;</span><br><span class="line">    pii res = <span class="built_in">make_pair</span>(INF,INF);</span><br><span class="line">    <span class="keyword">if</span>(L &lt;= mid) <span class="built_in">getmin</span>(res,<span class="built_in">query</span>(root &lt;&lt; <span class="number">1</span>,l,mid,L,R));<span class="comment">//这里用到了getmin，可以自己研究一下</span></span><br><span class="line">    <span class="keyword">if</span>(R &gt; mid) <span class="built_in">getmin</span>(res,<span class="built_in">query</span>(root &lt;&lt; <span class="number">1</span> | <span class="number">1</span>,mid + <span class="number">1</span>,r,L,R));</span><br><span class="line">    <span class="keyword">return</span> res;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="meta">#<span class="keyword">undef</span> l</span></span><br><span class="line"><span class="meta">#<span class="keyword">undef</span> r<span class="comment">//说了会undef</span></span></span><br></pre></td></tr></table></figure>
+<hr />
+<p>主函数</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span> <span class="params">()</span> </span>&#123;</span><br><span class="line">    ios::<span class="built_in">sync_with_stdio</span>(<span class="number">0</span>);<span class="comment">//优化</span></span><br><span class="line">    cin &gt;&gt; n;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">register</span> <span class="type">int</span> i = <span class="number">1</span>;i &lt;= n; ++i)</span><br><span class="line">        cin &gt;&gt; node[i].s;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">register</span> <span class="type">int</span> i = <span class="number">1</span>;i &lt;= n; ++i) &#123;</span><br><span class="line">        cin &gt;&gt; node[i].a;</span><br><span class="line">        pre[i] = i - <span class="number">1</span>;</span><br><span class="line">        nxt[i] = i + <span class="number">1</span>;<span class="comment">//链表初始化</span></span><br><span class="line">        ans[n] += node[i].a;<span class="comment">//最终答案</span></span><br><span class="line">    &#125;</span><br><span class="line">    <span class="built_in">build</span>(<span class="number">1</span>,<span class="number">1</span>,n);<span class="comment">//建树</span></span><br><span class="line">    l = <span class="number">1</span>,r = n;<span class="comment">//左右端点（实际只有 r 有用）</span></span><br><span class="line">    ans[n] += node[r].s * <span class="number">2</span>;<span class="comment">//答案要加上dis</span></span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">register</span> <span class="type">int</span> i = n - <span class="number">1</span>;i &gt;= <span class="number">1</span>; --i) &#123;<span class="comment">//倒推答案</span></span><br><span class="line">        pii tmp = <span class="built_in">query</span>(<span class="number">1</span>,<span class="number">1</span>,n,l,r - <span class="number">1</span>);<span class="comment">//方案1 中用线段树</span></span><br><span class="line">        <span class="type">int</span> ans1 = ans[i + <span class="number">1</span>] - tmp.first;<span class="comment">//方案1</span></span><br><span class="line">        <span class="type">int</span> ans2 = ans[i + <span class="number">1</span>] - node[r].a - node[r].s * <span class="number">2</span> + node[pre[r]].s * <span class="number">2</span>;<span class="comment">//方案2，也就是减去 r 的s*2和a，再加上新r的s*2</span></span><br><span class="line">        <span class="keyword">if</span>(ans1 &lt; ans2) &#123;<span class="comment">//如果方案1更优</span></span><br><span class="line">            <span class="type">int</span> ss = r;</span><br><span class="line">            r = pre[r]; <span class="built_in">Delete</span>(ss);<span class="comment">//删除右端点，更新右端点</span></span><br><span class="line">            ans[i] = ans2;<span class="comment">//更新答案</span></span><br><span class="line">        &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">            <span class="built_in">Delete</span>(tmp.second);<span class="comment">//删除当前下标</span></span><br><span class="line">            <span class="built_in">update</span>(<span class="number">1</span>,<span class="number">1</span>,n,tmp.second,INF);<span class="comment">//更新，把当前A变成INF</span></span><br><span class="line">            ans[i] = ans1; <span class="comment">//更新答案</span></span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">register</span> <span class="type">int</span> i = <span class="number">1</span>;i &lt;= n; ++i)</span><br><span class="line">        cout &lt;&lt; ans[i] &lt;&lt; endl;<span class="comment">//输出</span></span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;<span class="comment">//华丽丽地结束</span></span><br><span class="line">&#125; </span><br></pre></td></tr></table></figure>
+<hr />
+<p>最后附上完整代码</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//Code By CXY</span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span><span class="string">&lt;bits/stdc++.h&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"></span><br><span class="line"><span class="meta">#<span class="keyword">define</span> pii pair<span class="string">&lt;int,int&gt;</span><span class="comment">//这里用pair来存区间min值和min值下标</span></span></span><br><span class="line"></span><br><span class="line"><span class="type">const</span> <span class="type">int</span> MAXN = <span class="number">1e5</span> + <span class="number">10</span>;</span><br><span class="line"><span class="type">const</span> <span class="type">int</span> INF = <span class="number">1e9</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">struct</span> <span class="title class_">house</span> &#123;</span><br><span class="line">    <span class="type">int</span> a,s;</span><br><span class="line">    <span class="type">bool</span> <span class="keyword">operator</span> &lt; (<span class="type">const</span> house &amp;b) <span class="type">const</span> &#123;<span class="keyword">return</span> a &lt; b.a;&#125;</span><br><span class="line">&#125; node[MAXN];</span><br><span class="line"></span><br><span class="line"><span class="type">int</span> n,pre[MAXN],nxt[MAXN];<span class="comment">//pre、nxt：链表</span></span><br><span class="line"><span class="type">int</span> seg[MAXN &lt;&lt; <span class="number">2</span>],p[MAXN &lt;&lt; <span class="number">2</span>];<span class="comment">//seg：线段树区间min，p：线段树区间min下标</span></span><br><span class="line"><span class="type">int</span> ans[MAXN],l,r;<span class="comment">//ans：x为不同数值时的答案数组</span></span><br><span class="line"></span><br><span class="line"><span class="meta">#<span class="keyword">define</span> l ll<span class="comment">//懒得换变量名了，就define一下</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">define</span> r rr<span class="comment">//到时候会undef</span></span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">void</span> <span class="title">pushup</span><span class="params">(<span class="type">int</span> root)</span> </span>&#123;<span class="comment">//更新</span></span><br><span class="line">    <span class="keyword">if</span>(seg[root &lt;&lt; <span class="number">1</span> | <span class="number">1</span>] &lt; seg[root &lt;&lt; <span class="number">1</span>]) &#123;<span class="comment">//如果右子树更优</span></span><br><span class="line">        seg[root] = seg[root &lt;&lt; <span class="number">1</span> | <span class="number">1</span>];<span class="comment">//只能存右子树的答案了</span></span><br><span class="line">        p[root] = p[root &lt;&lt; <span class="number">1</span> | <span class="number">1</span>];</span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">        seg[root] = seg[root &lt;&lt; <span class="number">1</span>];<span class="comment">//否则存左子树，这样可以让下标尽量小</span></span><br><span class="line">        p[root] = p[root &lt;&lt; <span class="number">1</span>];</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">void</span> <span class="title">build</span><span class="params">(<span class="type">int</span> root,<span class="type">int</span> l,<span class="type">int</span> r)</span> </span>&#123;<span class="comment">//简单的建树</span></span><br><span class="line">    <span class="keyword">if</span>(l == r) &#123;</span><br><span class="line">        seg[root] = node[l].a;</span><br><span class="line">        p[root] = l;</span><br><span class="line">        <span class="keyword">return</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="type">int</span> mid = (l + r) &gt;&gt; <span class="number">1</span>;</span><br><span class="line">    <span class="built_in">build</span>(root &lt;&lt; <span class="number">1</span>,l,mid);</span><br><span class="line">    <span class="built_in">build</span>(root &lt;&lt; <span class="number">1</span> | <span class="number">1</span>,mid + <span class="number">1</span>,r);</span><br><span class="line">    <span class="built_in">pushup</span>(root);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">void</span> <span class="title">update</span><span class="params">(<span class="type">int</span> root,<span class="type">int</span> l,<span class="type">int</span> r,<span class="type">int</span> pos,<span class="type">int</span> val)</span> </span>&#123;<span class="comment">//简单的更新</span></span><br><span class="line">    <span class="keyword">if</span>(l == r &amp;&amp; l == pos) &#123;</span><br><span class="line">        seg[root] = val;</span><br><span class="line">        <span class="keyword">return</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="type">int</span> mid = (l + r) &gt;&gt; <span class="number">1</span>;</span><br><span class="line">    <span class="keyword">if</span>(pos &lt;= mid) <span class="built_in">update</span>(root &lt;&lt; <span class="number">1</span>,l,mid,pos,val);</span><br><span class="line">    <span class="keyword">else</span> <span class="built_in">update</span>(root &lt;&lt; <span class="number">1</span> | <span class="number">1</span>,mid + <span class="number">1</span>,r,pos,val);</span><br><span class="line">    <span class="built_in">pushup</span>(root);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function">pii <span class="title">getmin</span><span class="params">(pii &amp;a,pii b)</span> </span>&#123;<span class="comment">//类似于min函数，用来找两个pii中最小值较小的那个（即当前的返回值）</span></span><br><span class="line">    <span class="keyword">if</span>(b.first &lt; a.first) <span class="built_in">swap</span>(a,b);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function">pii <span class="title">query</span><span class="params">(<span class="type">int</span> root,<span class="type">int</span> l,<span class="type">int</span> r,<span class="type">int</span> L,<span class="type">int</span> R)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">if</span>(L &lt;= l &amp;&amp; r &lt;= R) <span class="keyword">return</span> <span class="built_in">make_pair</span>(seg[root],p[root]);</span><br><span class="line">    <span class="type">int</span> mid = (l + r) &gt;&gt; <span class="number">1</span>;</span><br><span class="line">    pii res = <span class="built_in">make_pair</span>(INF,INF);</span><br><span class="line">    <span class="keyword">if</span>(L &lt;= mid) <span class="built_in">getmin</span>(res,<span class="built_in">query</span>(root &lt;&lt; <span class="number">1</span>,l,mid,L,R));<span class="comment">//这里用到了getmin，可以自己研究一下</span></span><br><span class="line">    <span class="keyword">if</span>(R &gt; mid) <span class="built_in">getmin</span>(res,<span class="built_in">query</span>(root &lt;&lt; <span class="number">1</span> | <span class="number">1</span>,mid + <span class="number">1</span>,r,L,R));</span><br><span class="line">    <span class="keyword">return</span> res;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="meta">#<span class="keyword">undef</span> l</span></span><br><span class="line"><span class="meta">#<span class="keyword">undef</span> r<span class="comment">//说了会undef</span></span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">void</span> <span class="title">Delete</span><span class="params">(<span class="type">int</span> pos)</span> </span>&#123;</span><br><span class="line">    pre[nxt[pos]] = pre[pos];</span><br><span class="line">    nxt[pre[pos]] = nxt[pos];</span><br><span class="line">&#125;<span class="comment">//这是一个极其简单的删除节点函数。。。</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span> <span class="params">()</span> </span>&#123;</span><br><span class="line">    ios::<span class="built_in">sync_with_stdio</span>(<span class="number">0</span>);<span class="comment">//优化</span></span><br><span class="line">    cin &gt;&gt; n;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">register</span> <span class="type">int</span> i = <span class="number">1</span>;i &lt;= n; ++i)</span><br><span class="line">        cin &gt;&gt; node[i].s;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">register</span> <span class="type">int</span> i = <span class="number">1</span>;i &lt;= n; ++i) &#123;</span><br><span class="line">        cin &gt;&gt; node[i].a;</span><br><span class="line">        pre[i] = i - <span class="number">1</span>;</span><br><span class="line">        nxt[i] = i + <span class="number">1</span>;<span class="comment">//链表初始化</span></span><br><span class="line">        ans[n] += node[i].a;<span class="comment">//最终答案</span></span><br><span class="line">    &#125;</span><br><span class="line">    <span class="built_in">build</span>(<span class="number">1</span>,<span class="number">1</span>,n);<span class="comment">//建树</span></span><br><span class="line">    l = <span class="number">1</span>,r = n;<span class="comment">//左右端点（实际只有 r 有用）</span></span><br><span class="line">    ans[n] += node[r].s * <span class="number">2</span>;<span class="comment">//答案要加上dis</span></span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">register</span> <span class="type">int</span> i = n - <span class="number">1</span>;i &gt;= <span class="number">1</span>; --i) &#123;<span class="comment">//倒推答案</span></span><br><span class="line">        pii tmp = <span class="built_in">query</span>(<span class="number">1</span>,<span class="number">1</span>,n,l,r - <span class="number">1</span>);<span class="comment">//方案1 中用线段树</span></span><br><span class="line">        <span class="type">int</span> ans1 = ans[i + <span class="number">1</span>] - tmp.first;<span class="comment">//方案1</span></span><br><span class="line">        <span class="type">int</span> ans2 = ans[i + <span class="number">1</span>] - node[r].a - node[r].s * <span class="number">2</span> + node[pre[r]].s * <span class="number">2</span>;<span class="comment">//方案2，也就是减去 r 的s*2和a，再加上新r的s*2</span></span><br><span class="line">        <span class="keyword">if</span>(ans1 &lt; ans2) &#123;<span class="comment">//如果方案1更优</span></span><br><span class="line">            <span class="type">int</span> ss = r;</span><br><span class="line">            r = pre[r]; <span class="built_in">Delete</span>(ss);<span class="comment">//删除右端点，更新右端点</span></span><br><span class="line">            ans[i] = ans2;<span class="comment">//更新答案</span></span><br><span class="line">        &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">            <span class="built_in">Delete</span>(tmp.second);<span class="comment">//删除当前下标</span></span><br><span class="line">            <span class="built_in">update</span>(<span class="number">1</span>,<span class="number">1</span>,n,tmp.second,INF);<span class="comment">//更新，把当前A变成INF</span></span><br><span class="line">            ans[i] = ans1; <span class="comment">//更新答案</span></span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">register</span> <span class="type">int</span> i = <span class="number">1</span>;i &lt;= n; ++i)</span><br><span class="line">        cout &lt;&lt; ans[i] &lt;&lt; endl;<span class="comment">//输出</span></span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;<span class="comment">//华丽丽地结束</span></span><br><span class="line">&#125; </span><br></pre></td></tr></table></figure>
+<p>其实用线段树也蛮有趣的，大家可以试试鸭</p>
+<p>初二的 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>O</mi><mi>I</mi><mi>e</mi><mi>r</mi></mrow><annotation encoding="application/x-tex">OIer</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.68333em;vertical-align:0em;"></span><span class="mord mathnormal" style="margin-right:0.02778em;">O</span><span class="mord mathnormal" style="margin-right:0.07847em;">I</span><span class="mord mathnormal">e</span><span class="mord mathnormal" style="margin-right:0.02778em;">r</span></span></span></span> ，请多关照</p>
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/OI-Solutions/" rel="tag"># OI-Solutions</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/OI/%E3%80%90%E9%A2%98%E8%A7%A3%E3%80%91Luogu-P4180-%E4%B8%A5%E6%A0%BC%E6%AC%A1%E5%B0%8F%E7%94%9F%E6%88%90%E6%A0%91/" rel="prev" title="【题解】Luogu-P4180 严格次小生成树">
+                  <i class="fa fa-angle-left"></i> 【题解】Luogu-P4180 严格次小生成树
+                </a>
+            </div>
+            <div class="post-nav-item">
+                <a href="/OI/%E3%80%90%E6%B8%B8%E8%AE%B0%E3%80%91CSP-S-2019-%E6%BB%9A%E7%B2%97%E8%AE%B0/" rel="next" title="【游记】CSP-S 2019 滚粗记">
+                  【游记】CSP-S 2019 滚粗记 <i class="fa fa-angle-right"></i>
+                </a>
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+  <div class="copyright">
+    &copy; 
+    <span itemprop="copyrightYear">2025</span>
+    <span class="with-love">
+      <i class="fa fa-heart"></i>
+    </span>
+    <span class="author" itemprop="copyrightHolder">Xuanyu Chu</span>
+  </div>
+  <div class="powered-by">Powered by <a href="https://hexo.io/" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/muse/" rel="noopener" target="_blank">NexT.Muse</a>
+  </div>
+
+    </div>
+  </footer>
+
+  
+  <div class="toggle sidebar-toggle" role="button">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+  <div class="sidebar-dimmer"></div>
+  <div class="back-to-top" role="button" aria-label="Back to top">
+    <i class="fa fa-arrow-up fa-lg"></i>
+    <span>0%</span>
+  </div>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
+<script src="/js/comments.js"></script><script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/sidebar.js"></script><script src="/js/next-boot.js"></script>
+
+  
+
+
+
+
+
+
+  
+
+
+
+
+  
+
+  <script class="next-config" data-name="enableMath" type="application/json">false</script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.9/katex.min.css" integrity="sha256-UF1fgpAiu3tPJN/uCqEUHNe7pnr+QR0SQDNfgglgtcM=" crossorigin="anonymous">
+
+
+
+</body>
+</html>
