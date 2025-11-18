@@ -26,7 +26,7 @@
 <meta property="og:description" content="感觉做 Survey 的时候负责的部分并不是我感兴趣的方向，所以看起来如果想得到一些 Idea，还得重新开始积累 VLA 相关的文章。 另一方面，感觉中学的时候写博客的习惯挺好的，上大学之后没有好好坚持，主要也是没找到很好的“把大学课程转化为博客”的方式。 所以准备重启一下，一方面记录一下自己读过一些什么，另一方面也让自己能有机会思考一下。">
 <meta property="og:locale" content="en_US">
 <meta property="article:published_time" content="2025-11-18T10:31:26.000Z">
-<meta property="article:modified_time" content="2025-11-18T10:40:13.268Z">
+<meta property="article:modified_time" content="2025-11-18T11:39:49.363Z">
 <meta property="article:author" content="Xuanyu Chu">
 <meta property="article:tag" content="THU">
 <meta property="article:tag" content="AI">
@@ -91,7 +91,7 @@
   
   <aside class="sidebar">
 
-    <div class="sidebar-inner sidebar-overview-active">
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
       <ul class="sidebar-nav">
         <li class="sidebar-nav-toc">
           Table of Contents
@@ -104,6 +104,7 @@
       <div class="sidebar-panel-container">
         <!--noindex-->
         <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#actions-as-language-fine-tuning-vlms-into-vlas-without-catastrophic-forgetting"><span class="nav-number">1.</span> <span class="nav-text"> Actions as Language: Fine-Tuning VLMs into VLAs Without Catastrophic Forgetting</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#introduction"><span class="nav-number">1.1.</span> <span class="nav-text"> Introduction</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#method"><span class="nav-number">1.2.</span> <span class="nav-text"> Method</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#experiment"><span class="nav-number">1.3.</span> <span class="nav-text"> Experiment</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%BF%B7%E6%80%9D"><span class="nav-number">1.4.</span> <span class="nav-text"> 迷思</span></a></li></ol></li></ol></div>
         </div>
         <!--/noindex-->
 
@@ -182,7 +183,7 @@
       <span class="post-meta-item-text">Posted on</span>
       
 
-      <time title="Created: 2025-11-18 18:31:26 / Modified: 18:40:13" itemprop="dateCreated datePublished" datetime="2025-11-18T18:31:26+08:00">2025-11-18</time>
+      <time title="Created: 2025-11-18 18:31:26 / Modified: 19:39:49" itemprop="dateCreated datePublished" datetime="2025-11-18T18:31:26+08:00">2025-11-18</time>
     </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -207,6 +208,26 @@
 <p>另一方面，感觉中学的时候写博客的习惯挺好的，上大学之后没有好好坚持，主要也是没找到很好的“把大学课程转化为博客”的方式。</p>
 <p>所以准备重启一下，一方面记录一下自己读过一些什么，另一方面也让自己能有机会思考一下。</p>
 <span id="more"></span>
+<h1 id="actions-as-language-fine-tuning-vlms-into-vlas-without-catastrophic-forgetting"><a class="markdownIt-Anchor" href="#actions-as-language-fine-tuning-vlms-into-vlas-without-catastrophic-forgetting"></a> Actions as Language: Fine-Tuning VLMs into VLAs Without Catastrophic Forgetting</h1>
+<p><a target="_blank" rel="noopener" href="https://openreview.net/forum?id=sFO9d6XSlf">link</a></p>
+<h2 id="introduction"><a class="markdownIt-Anchor" href="#introduction"></a> Introduction</h2>
+<p>在把 VLM finetune 成 VLA 的时候，会导致 catastrophic forgetting，即模型会忘记之前 VLM 的一些知识。</p>
+<p>文章提出 VLM2VLA，一种将 <strong>low-level</strong> 的 action 表示为 natural language 的方法，把 VLA 的数据和之前 VLM 的数据 align 了一下，从而在训练的时候可以使用 LoRA（LoRA 依靠 finetune 数据和 pretrain 的数据差距不大），避免 catastrophic forgetting.</p>
+<h2 id="method"><a class="markdownIt-Anchor" href="#method"></a> Method</h2>
+<p>文章把一个数据处理成三层：</p>
+<ul>
+<li>High-Level Subtask Prediction：就是把任务变成 subtasks</li>
+<li>Mid-Level Motion Planning：对每个 subtask，用文字描述怎么 motion</li>
+<li>Low-Level Action Generation：自回归地生成 action chunk</li>
+</ul>
+<p>直接用 Gemini 处理生成。</p>
+<p>他们想说，因为把 finetune 数据和 pretrain 数据的 gap 变小了，所以 LoRA 就能训动了，然后他们直接在 Gemma-3-12B-IT 上训了。</p>
+<h2 id="experiment"><a class="markdownIt-Anchor" href="#experiment"></a> Experiment</h2>
+<p>主要测了一下 finetune 完之后在 VQA 数据集上的表现，以及一些 ID、OOD 任务的表现。</p>
+<h2 id="迷思"><a class="markdownIt-Anchor" href="#迷思"></a> 迷思</h2>
+<p>感觉应该把故事讲成，我们可以用 LoRA 把 VLM 变成 VLA，而且不会忘记之前的知识。</p>
+<p>文章里说推理一步要花 6s，并且这个方法进一步加长了自回归生成文本长度。虽然说可以涨点，但我感觉这不像是最后能 work 的路线，毕竟对机器人来说，推理效率还是很重要的。</p>
+<p><s>ICLR 2026 获得了 2668 的分数，感觉很神奇，为什么居然能拿 8。</s></p>
 
     </div>
 
