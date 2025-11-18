@@ -1,0 +1,439 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222"><meta name="generator" content="Hexo 7.3.0">
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/my_favicon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/my_favicon-32x32.ico">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/my_favicon-16x16.ico">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" integrity="sha256-dABdfBfUoC8vJUBOwGVdm8L9qlMWaHTIfXt+7GnZCIo=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"example.com","root":"/","images":"/images","scheme":"Muse","darkmode":false,"version":"8.22.0","exturl":false,"sidebar":{"position":"left","width_expanded":320,"width_dual_column":240,"display":"post","padding":18,"offset":12},"hljswrap":true,"copycode":{"enable":false,"style":null},"fold":{"enable":false,"height":500},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"duration":200,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"i18n":{"placeholder":"Searching...","empty":"We didn't find any results for the search: ${query}","hits_time":"${hits} results found in ${time} ms","hits":"${hits} results found"}}</script><script src="/js/config.js"></script>
+
+    <meta name="description" content="English 2Hard4Me Embodied AI Guide">
+<meta property="og:type" content="article">
+<meta property="og:title" content="【学习笔记】经典论文">
+<meta property="og:url" content="http://example.com/AI/%E3%80%90%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%E3%80%91%E7%BB%8F%E5%85%B8%E8%AE%BA%E6%96%87/index.html">
+<meta property="og:site_name" content="CXY07&#39;s Blog">
+<meta property="og:description" content="English 2Hard4Me Embodied AI Guide">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="http://example.com/AI/%E3%80%90%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%E3%80%91%E7%BB%8F%E5%85%B8%E8%AE%BA%E6%96%87/ViT.png">
+<meta property="og:image" content="http://example.com/AI/%E3%80%90%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%E3%80%91%E7%BB%8F%E5%85%B8%E8%AE%BA%E6%96%87/DINO.png">
+<meta property="og:image" content="http://example.com/AI/%E3%80%90%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%E3%80%91%E7%BB%8F%E5%85%B8%E8%AE%BA%E6%96%87/CLIP.png">
+<meta property="og:image" content="http://example.com/AI/%E3%80%90%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%E3%80%91%E7%BB%8F%E5%85%B8%E8%AE%BA%E6%96%87/RT-Trajectory.png">
+<meta property="og:image" content="http://example.com/AI/%E3%80%90%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%E3%80%91%E7%BB%8F%E5%85%B8%E8%AE%BA%E6%96%87/RoboFlamingo.png">
+<meta property="article:published_time" content="2025-02-25T05:15:13.000Z">
+<meta property="article:modified_time" content="2025-03-10T02:52:05.178Z">
+<meta property="article:author" content="Xuanyu Chu">
+<meta property="article:tag" content="AI">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://example.com/AI/%E3%80%90%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%E3%80%91%E7%BB%8F%E5%85%B8%E8%AE%BA%E6%96%87/ViT.png">
+
+
+<link rel="canonical" href="http://example.com/AI/%E3%80%90%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%E3%80%91%E7%BB%8F%E5%85%B8%E8%AE%BA%E6%96%87/">
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"en","comments":true,"permalink":"http://example.com/AI/%E3%80%90%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%E3%80%91%E7%BB%8F%E5%85%B8%E8%AE%BA%E6%96%87/","path":"AI/【学习笔记】经典论文/","title":"【学习笔记】经典论文"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>【学习笔记】经典论文 | CXY07's Blog</title>
+  
+
+
+
+
+
+
+
+
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <div class="column">
+      <header class="header" itemscope itemtype="http://schema.org/WPHeader"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="Toggle navigation bar" role="button">
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <p class="site-title">CXY07's Blog</p>
+      <i class="logo-line"></i>
+    </a>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger" aria-label="Search" role="button">
+    </div>
+  </div>
+</div>
+
+
+
+
+
+
+
+</header>
+        
+  
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          Table of Contents
+        </li>
+        <li class="sidebar-nav-overview">
+          Overview
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#vit-vision-transformer"><span class="nav-number">1.</span> <span class="nav-text"> ViT (Vision Transformer)</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%A8%A1%E5%9E%8B%E7%BB%93%E6%9E%84"><span class="nav-number">1.1.</span> <span class="nav-text"> 模型结构</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%BB%E8%A6%81%E8%B4%A1%E7%8C%AE"><span class="nav-number">1.2.</span> <span class="nav-text"> 主要贡献</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#dino"><span class="nav-number">2.</span> <span class="nav-text"> DINO</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%9B%AE%E7%9A%84-%E6%96%B9%E6%B3%95"><span class="nav-number">2.1.</span> <span class="nav-text"> 目的 &amp; 方法</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%BB%E8%A6%81%E8%B4%A1%E7%8C%AE-2"><span class="nav-number">2.2.</span> <span class="nav-text"> 主要贡献</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#t5"><span class="nav-number">3.</span> <span class="nav-text"> T5</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#clip"><span class="nav-number">4.</span> <span class="nav-text"> CLIP</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%9B%AE%E7%9A%84-%E6%96%B9%E6%B3%95-2"><span class="nav-number">4.1.</span> <span class="nav-text"> 目的 &amp; 方法</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%95%88%E6%9E%9C-%E8%B4%A1%E7%8C%AE"><span class="nav-number">4.2.</span> <span class="nav-text"> 效果 &amp; 贡献</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#palm-e"><span class="nav-number">5.</span> <span class="nav-text"> PaLM-E</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%9B%AE%E7%9A%84-%E6%96%B9%E6%B3%95-3"><span class="nav-number">5.1.</span> <span class="nav-text"> 目的 &amp; 方法</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%95%88%E6%9E%9C-%E8%B4%A1%E7%8C%AE-2"><span class="nav-number">5.2.</span> <span class="nav-text"> 效果 &amp; 贡献</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#rt-1-robotics-transformer-1"><span class="nav-number">6.</span> <span class="nav-text"> RT-1 (Robotics Transformer 1)</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%9B%AE%E7%9A%84-%E6%96%B9%E6%B3%95-4"><span class="nav-number">6.1.</span> <span class="nav-text"> 目的 &amp; 方法</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%B1%80%E9%99%90"><span class="nav-number">6.2.</span> <span class="nav-text"> 局限</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#saycan"><span class="nav-number">7.</span> <span class="nav-text"> SayCan</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#rt-2"><span class="nav-number">8.</span> <span class="nav-text"> RT-2</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%B1%80%E9%99%90-2"><span class="nav-number">8.1.</span> <span class="nav-text"> 局限</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#rt-trajectory"><span class="nav-number">9.</span> <span class="nav-text"> RT-Trajectory</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%95%88%E6%9E%9C"><span class="nav-number">9.1.</span> <span class="nav-text"> 效果</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#autort"><span class="nav-number">10.</span> <span class="nav-text"> AutoRT</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#roboflamingo"><span class="nav-number">11.</span> <span class="nav-text"> RoboFlamingo</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#openvla"><span class="nav-number">12.</span> <span class="nav-text"> OpenVLA</span></a></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">Xuanyu Chu</p>
+  <div class="site-description" itemprop="description"></div>
+</div>
+<div class="site-state-wrap animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        <a href="/archives/">
+          <span class="site-state-item-count">13</span>
+          <span class="site-state-item-name">posts</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+        <span class="site-state-item-count">3</span>
+        <span class="site-state-item-name">categories</span>
+      </div>
+      <div class="site-state-item site-state-tags">
+        <span class="site-state-item-count">7</span>
+        <span class="site-state-item-name">tags</span>
+      </div>
+  </nav>
+</div>
+
+        </div>
+      </div>
+    </div>
+
+    
+  </aside>
+
+
+    </div>
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="en">
+    <link itemprop="mainEntityOfPage" href="http://example.com/AI/%E3%80%90%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%E3%80%91%E7%BB%8F%E5%85%B8%E8%AE%BA%E6%96%87/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Xuanyu Chu">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="CXY07's Blog">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="【学习笔记】经典论文 | CXY07's Blog">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          【学习笔记】经典论文
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">Posted on</span>
+
+      <time title="Created: 2025-02-25 13:15:13" itemprop="dateCreated datePublished" datetime="2025-02-25T13:15:13+08:00">2025-02-25</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">Edited on</span>
+      <time title="Modified: 2025-03-10 10:52:05" itemprop="dateModified" datetime="2025-03-10T10:52:05+08:00">2025-03-10</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">In</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/AI/" itemprop="url" rel="index"><span itemprop="name">AI</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody"><p>English 2Hard4Me</p>
+<p><a target="_blank" rel="noopener" href="https://github.com/TianxingChen/Embodied-AI-Guide?tab=readme-ov-file#robot-learning">Embodied AI Guide</a></p>
+<span id="more"></span>
+<h1 id="vit-vision-transformer"><a class="markdownIt-Anchor" href="#vit-vision-transformer"></a> ViT (Vision Transformer)</h1>
+<h2 id="模型结构"><a class="markdownIt-Anchor" href="#模型结构"></a> 模型结构</h2>
+<img src="/AI/%E3%80%90%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%E3%80%91%E7%BB%8F%E5%85%B8%E8%AE%BA%E6%96%87/ViT.png" class="" title="ViT Structure">
+<p>将图像分为不重叠的 Patch, 过一个 Linear Projection, 加入<strong>可学习</strong>的 Position Embedding (Transformer 那篇文章里的 Position Embedding 是三角函数)</p>
+<p>然后直接用 Transformer 的结构进行处理, 最后用一个全连接层进行分类。</p>
+<h2 id="主要贡献"><a class="markdownIt-Anchor" href="#主要贡献"></a> 主要贡献</h2>
+<p>不依赖于 CNN 的结构，而是直接利用 Transformer 的架构。</p>
+<p>在训练集足够的时候性能超越 CNN。</p>
+<h1 id="dino"><a class="markdownIt-Anchor" href="#dino"></a> DINO</h1>
+<blockquote>
+<p>Emerging Properties in Self-Supervised Vision Transformers</p>
+</blockquote>
+<h2 id="目的-方法"><a class="markdownIt-Anchor" href="#目的-方法"></a> 目的 &amp; 方法</h2>
+<p>文章想研究在 ViT 上使用 SSL (Self-Supervised Learning) 的效果，模型会学到什么，以及能否应用于下游任务。</p>
+<p>采用 Knowledge Distillation 的方法，使用两个结构相同的 ViT (Teacher, Student).</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># gs, gt: student and teacher networks </span></span><br><span class="line"><span class="comment"># C: center (K) # tps, tpt: student and teacher temperatures </span></span><br><span class="line"><span class="comment"># l, m: network and center momentum rates </span></span><br><span class="line"></span><br><span class="line">gt.params = gs.params </span><br><span class="line"><span class="keyword">for</span> x <span class="keyword">in</span> loader: <span class="comment"># load a minibatch x with n samples </span></span><br><span class="line">    x1, x2 = augment(x), augment(x) <span class="comment"># random views </span></span><br><span class="line"></span><br><span class="line">    s1, s2 = gs(x1), gs(x2) <span class="comment"># student output n-by-K </span></span><br><span class="line">    t1, t2 = gt(x1), gt(x2) <span class="comment"># teacher output n-by-K  </span></span><br><span class="line"></span><br><span class="line">    loss = H(t1, s2)/<span class="number">2</span> + H(t2, s1)/<span class="number">2</span> </span><br><span class="line">    loss.backward() <span class="comment"># back-propagate  </span></span><br><span class="line"></span><br><span class="line">    <span class="comment"># student, teacher and center updates </span></span><br><span class="line">    update(gs) <span class="comment"># SGD </span></span><br><span class="line">    gt.params = l*gt.params + (<span class="number">1</span>-l)*gs.params </span><br><span class="line">    C = m*C + (<span class="number">1</span>-m)*cat([t1, t2]).mean(dim=<span class="number">0</span>)  </span><br><span class="line"></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">H</span>(<span class="params">t, s</span>): </span><br><span class="line">    t = t.detach() <span class="comment"># stop gradient </span></span><br><span class="line">    s = softmax(s / tps, dim=<span class="number">1</span>) </span><br><span class="line">    t = softmax((t - C) / tpt, dim=<span class="number">1</span>) <span class="comment"># center + sharpen </span></span><br><span class="line">    <span class="keyword">return</span> - (t * log(s)).<span class="built_in">sum</span>(dim=<span class="number">1</span>).mean()</span><br></pre></td></tr></table></figure>
+<p>上面是不包括 multi-crop 的版本，里面的 <code>C</code> 类似于一个 moving average，通过均值调整的方式防止 teacher 模型发生 collapse (Why?).</p>
+<p>加入 multi-crop 的话，就是通过一张图去裁剪出一组视图 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>V</mi></mrow><annotation encoding="application/x-tex">V</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.68333em;vertical-align:0em;"></span><span class="mord mathnormal" style="margin-right:0.22222em;">V</span></span></span></span>，其中有两个全局视图（比较大）<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msubsup><mi>x</mi><mn>1</mn><mi>g</mi></msubsup><mo separator="true">,</mo><msubsup><mi>x</mi><mn>2</mn><mi>g</mi></msubsup></mrow><annotation encoding="application/x-tex">x_1^g, x_2^g</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1.048608em;vertical-align:-0.266308em;"></span><span class="mord"><span class="mord mathnormal">x</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.7823em;"><span style="top:-2.433692em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">1</span></span></span><span style="top:-3.1809080000000005em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight" style="margin-right:0.03588em;">g</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.266308em;"><span></span></span></span></span></span></span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mord"><span class="mord mathnormal">x</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.7823em;"><span style="top:-2.433692em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">2</span></span></span><span style="top:-3.1809080000000005em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight" style="margin-right:0.03588em;">g</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.266308em;"><span></span></span></span></span></span></span></span></span></span> 和其他一些比较小的。然后用下面的损失函数：</p>
+<p class='katex-block'><span class="katex-display"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML" display="block"><semantics><mrow><mi>min</mi><mo>⁡</mo><munder><mo>∑</mo><mrow><mi>x</mi><mo>∈</mo><mo stretchy="false">{</mo><msubsup><mi>x</mi><mn>1</mn><mi>g</mi></msubsup><mo separator="true">,</mo><msubsup><mi>x</mi><mn>2</mn><mi>g</mi></msubsup><mo stretchy="false">}</mo></mrow></munder><munder><mo>∑</mo><mrow><msup><mi>x</mi><mo mathvariant="normal" lspace="0em" rspace="0em">′</mo></msup><mo>∈</mo><mi>V</mi><mo separator="true">,</mo><msup><mi>x</mi><mo mathvariant="normal" lspace="0em" rspace="0em">′</mo></msup><mo mathvariant="normal">≠</mo><mi>x</mi></mrow></munder><mi>H</mi><mo stretchy="false">(</mo><msub><mi>P</mi><mi>t</mi></msub><mo stretchy="false">(</mo><mi>x</mi><mo stretchy="false">)</mo><mo separator="true">,</mo><msub><mi>P</mi><mi>s</mi></msub><mo stretchy="false">(</mo><msup><mi>x</mi><mo mathvariant="normal" lspace="0em" rspace="0em">′</mo></msup><mo stretchy="false">)</mo><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">\min \sum_{x \in \{ x_1^g, x_2^g \} } \sum_{x&#x27; \in V, x&#x27; \neq x} H(P_t(x), P_s(x&#x27;))
+</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:2.6379300000000003em;vertical-align:-1.587925em;"></span><span class="mop">min</span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mop op-limits"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:1.0500050000000003em;"><span style="top:-1.780135em;margin-left:0em;"><span class="pstrut" style="height:3.05em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathnormal mtight">x</span><span class="mrel mtight">∈</span><span class="mopen mtight">{</span><span class="mord mtight"><span class="mord mathnormal mtight">x</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.7912285714285715em;"><span style="top:-2.188485714285714em;margin-left:0em;margin-right:0.07142857142857144em;"><span class="pstrut" style="height:2.5em;"></span><span class="sizing reset-size3 size1 mtight"><span class="mord mtight">1</span></span></span><span style="top:-2.9836857142857145em;margin-right:0.07142857142857144em;"><span class="pstrut" style="height:2.5em;"></span><span class="sizing reset-size3 size1 mtight"><span class="mord mathnormal mtight" style="margin-right:0.03588em;">g</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.3115142857142858em;"><span></span></span></span></span></span></span><span class="mpunct mtight">,</span><span class="mord mtight"><span class="mord mathnormal mtight">x</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.7912285714285715em;"><span style="top:-2.188485714285714em;margin-left:0em;margin-right:0.07142857142857144em;"><span class="pstrut" style="height:2.5em;"></span><span class="sizing reset-size3 size1 mtight"><span class="mord mtight">2</span></span></span><span style="top:-2.9836857142857145em;margin-right:0.07142857142857144em;"><span class="pstrut" style="height:2.5em;"></span><span class="sizing reset-size3 size1 mtight"><span class="mord mathnormal mtight" style="margin-right:0.03588em;">g</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.3115142857142858em;"><span></span></span></span></span></span></span><span class="mclose mtight">}</span></span></span></span><span style="top:-3.050005em;"><span class="pstrut" style="height:3.05em;"></span><span><span class="mop op-symbol large-op">∑</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:1.587925em;"><span></span></span></span></span></span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mop op-limits"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:1.050005em;"><span style="top:-1.8478869999999998em;margin-left:0em;"><span class="pstrut" style="height:3.05em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight"><span class="mord mathnormal mtight">x</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.6828285714285715em;"><span style="top:-2.786em;margin-right:0.07142857142857144em;"><span class="pstrut" style="height:2.5em;"></span><span class="sizing reset-size3 size1 mtight"><span class="mord mtight"><span class="mord mtight">′</span></span></span></span></span></span></span></span></span><span class="mrel mtight">∈</span><span class="mord mathnormal mtight" style="margin-right:0.22222em;">V</span><span class="mpunct mtight">,</span><span class="mord mtight"><span class="mord mathnormal mtight">x</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.6828285714285715em;"><span style="top:-2.786em;margin-right:0.07142857142857144em;"><span class="pstrut" style="height:2.5em;"></span><span class="sizing reset-size3 size1 mtight"><span class="mord mtight"><span class="mord mtight">′</span></span></span></span></span></span></span></span></span><span class="mrel mtight"><span class="mrel mtight"><span class="mord vbox mtight"><span class="thinbox mtight"><span class="rlap mtight"><span class="strut" style="height:0.8888799999999999em;vertical-align:-0.19444em;"></span><span class="inner"><span class="mrel mtight"></span></span><span class="fix"></span></span></span></span></span><span class="mrel mtight">=</span></span><span class="mord mathnormal mtight">x</span></span></span></span><span style="top:-3.0500049999999996em;"><span class="pstrut" style="height:3.05em;"></span><span><span class="mop op-symbol large-op">∑</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:1.438221em;"><span></span></span></span></span></span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mord mathnormal" style="margin-right:0.08125em;">H</span><span class="mopen">(</span><span class="mord"><span class="mord mathnormal" style="margin-right:0.13889em;">P</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.2805559999999999em;"><span style="top:-2.5500000000000003em;margin-left:-0.13889em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight">t</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mopen">(</span><span class="mord mathnormal">x</span><span class="mclose">)</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.13889em;">P</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.151392em;"><span style="top:-2.5500000000000003em;margin-left:-0.13889em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight">s</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mopen">(</span><span class="mord"><span class="mord mathnormal">x</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.801892em;"><span style="top:-3.113em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight">′</span></span></span></span></span></span></span></span></span><span class="mclose">)</span><span class="mclose">)</span></span></span></span></span></p>
+<p>其中 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mstyle scriptlevel="0" displaystyle="true"><mi>H</mi><mo stretchy="false">(</mo><mi>a</mi><mo separator="true">,</mo><mi>b</mi><mo stretchy="false">)</mo><mo>=</mo><mo>−</mo><mi>a</mi><mi>log</mi><mo>⁡</mo><mi>b</mi></mstyle></mrow><annotation encoding="application/x-tex">\displaystyle H(a, b)=- a \log b</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal" style="margin-right:0.08125em;">H</span><span class="mopen">(</span><span class="mord mathnormal">a</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mord mathnormal">b</span><span class="mclose">)</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:0.8888799999999999em;vertical-align:-0.19444em;"></span><span class="mord">−</span><span class="mord mathnormal">a</span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mop">lo<span style="margin-right:0.01389em;">g</span></span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mord mathnormal">b</span></span></span></span>. 相当于让 student 学习从局部到整体概括。</p>
+<p>训练完一轮 student 后，用 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>θ</mi><mi>t</mi></msub><mo>←</mo><mi>λ</mi><msub><mi>θ</mi><mi>t</mi></msub><mo>+</mo><mo stretchy="false">(</mo><mn>1</mn><mo>−</mo><mi>λ</mi><mo stretchy="false">)</mo><msub><mi>θ</mi><mi>s</mi></msub></mrow><annotation encoding="application/x-tex">\theta_t \leftarrow \lambda \theta_t + (1-\lambda) \theta_s</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.84444em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.02778em;">θ</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.2805559999999999em;"><span style="top:-2.5500000000000003em;margin-left:-0.02778em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight">t</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">←</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:0.84444em;vertical-align:-0.15em;"></span><span class="mord mathnormal">λ</span><span class="mord"><span class="mord mathnormal" style="margin-right:0.02778em;">θ</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.2805559999999999em;"><span style="top:-2.5500000000000003em;margin-left:-0.02778em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight">t</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mopen">(</span><span class="mord">1</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">−</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal">λ</span><span class="mclose">)</span><span class="mord"><span class="mord mathnormal" style="margin-right:0.02778em;">θ</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.151392em;"><span style="top:-2.5500000000000003em;margin-left:-0.02778em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight">s</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span></span> 更新 teacher 的参数 (EMA).</p>
+<img src="/AI/%E3%80%90%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%E3%80%91%E7%BB%8F%E5%85%B8%E8%AE%BA%E6%96%87/DINO.png" class="" title="DINO">
+<h2 id="主要贡献-2"><a class="markdownIt-Anchor" href="#主要贡献-2"></a> 主要贡献</h2>
+<p>提供了一种 ViT 的 SSL 方法。</p>
+<p>而且 ViT 在训练后自然学习到了语义分割、目标检测等信息，而无需额外的监督。</p>
+<h1 id="t5"><a class="markdownIt-Anchor" href="#t5"></a> T5</h1>
+<p>哦。</p>
+<h1 id="clip"><a class="markdownIt-Anchor" href="#clip"></a> CLIP</h1>
+<blockquote>
+<p>Learning Transferable Visual Models From Natural Language Supervision</p>
+</blockquote>
+<h2 id="目的-方法-2"><a class="markdownIt-Anchor" href="#目的-方法-2"></a> 目的 &amp; 方法</h2>
+<p>之前的视觉模型都需要在一个特定的数据集上做有监督训练，能不能训一个通用的视觉模型，使得其无需额外的有监督数据，就可以适应多种的视觉任务？</p>
+<p>考虑让模型进行图像-文本的学习。</p>
+<img src="/AI/%E3%80%90%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%E3%80%91%E7%BB%8F%E5%85%B8%E8%AE%BA%E6%96%87/CLIP.png" class="" title="CLIP">
+<p>通过<strong>对比学习</strong>的方式，最大化对角线的相似度，最小化其他位置的相似度。</p>
+<h2 id="效果-贡献"><a class="markdownIt-Anchor" href="#效果-贡献"></a> 效果 &amp; 贡献</h2>
+<p>CLIP 能在很多视觉任务上，没有微调地 Zero-Shot 达到接近 SOTA 的效果。</p>
+<p>证明大规模数据+自然语言监督对模型泛化能力的提升，展示对比学习的有效性等。</p>
+<h1 id="palm-e"><a class="markdownIt-Anchor" href="#palm-e"></a> PaLM-E</h1>
+<blockquote>
+<p>PaLM-E: An Embodied Multimodal Language Model</p>
+</blockquote>
+<h2 id="目的-方法-3"><a class="markdownIt-Anchor" href="#目的-方法-3"></a> 目的 &amp; 方法</h2>
+<p>关键问题：如何让大模型能处理机器人的任务，同时结合多模态的信息？</p>
+<p>机器人的任务需要结合视觉、文本、状态数据 (state estimation vector) 来进行推理和决策。</p>
+<p>因此本文目标就是统一多模态输入的编码。特别地，文章希望能做到将多种模态穿插着使用，例如在文本中间穿插图像。</p>
+<ul>
+<li>基于 PaLM 进行改进，引入多模态信息。</li>
+<li>采用 ViT 作为图像特征提取器，使用 Object-centric representations，Object Scene Representation Transformer (OSRT)，Entity referrals 等方法进行编码（？）</li>
+</ul>
+<h2 id="效果-贡献-2"><a class="markdownIt-Anchor" href="#效果-贡献-2"></a> 效果 &amp; 贡献</h2>
+<p>文章的实验证明 multi-tasks 的训练对模型表现有提升。</p>
+<ul>
+<li>在多个机器人任务上实现零样本 / 少样本泛化</li>
+<li>在传统的 NLP 任务上，PaLM-E 保持了 PaLM 的性能</li>
+<li>在多模态任务上性能有所提升</li>
+</ul>
+<p>实现了端到端 (End-to-end) 的学习，减少了手工设计的控制管道。但这里的端到端是说从多模态输入到输出任务规划，如果需要用在机器人上，还缺少一个从任务规划到机器人动作的 Policy Model。</p>
+<h1 id="rt-1-robotics-transformer-1"><a class="markdownIt-Anchor" href="#rt-1-robotics-transformer-1"></a> RT-1 (Robotics Transformer 1)</h1>
+<blockquote>
+<p>RT-1: ROBOTICS TRANSFORMER FOR REAL-WORLD CONTROL AT SCALE</p>
+</blockquote>
+<h2 id="目的-方法-4"><a class="markdownIt-Anchor" href="#目的-方法-4"></a> 目的 &amp; 方法</h2>
+<p>设计一个通用的机器人模型，能在不同任务之间泛化。</p>
+<p>输入是 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>6</mn></mrow><annotation encoding="application/x-tex">6</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.64444em;vertical-align:0em;"></span><span class="mord">6</span></span></span></span> 张 history images 和 task description, 输出是 tokenized action.</p>
+<p>首先把 images 过一个 EfficientNet 提取特征，其中加入 FiLM 层以混合文字信息。得到 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>81</mn></mrow><annotation encoding="application/x-tex">81</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.64444em;vertical-align:0em;"></span><span class="mord">8</span><span class="mord">1</span></span></span></span> 个 visual tokens (per image).</p>
+<p>接着将这 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>81</mn></mrow><annotation encoding="application/x-tex">81</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.64444em;vertical-align:0em;"></span><span class="mord">8</span><span class="mord">1</span></span></span></span> 个 visual tokens 过一个 TokenLearners 进一步压缩成 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>8</mn></mrow><annotation encoding="application/x-tex">8</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.64444em;vertical-align:0em;"></span><span class="mord">8</span></span></span></span> 个 tokens (per image).</p>
+<p>最后 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>6</mn></mrow><annotation encoding="application/x-tex">6</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.64444em;vertical-align:0em;"></span><span class="mord">6</span></span></span></span> 张图片，一共 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>6</mn><mo>×</mo><mn>8</mn><mo>=</mo><mn>48</mn></mrow><annotation encoding="application/x-tex">6 \times 8=48</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.72777em;vertical-align:-0.08333em;"></span><span class="mord">6</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">×</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:0.64444em;vertical-align:0em;"></span><span class="mord">8</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:0.64444em;vertical-align:0em;"></span><span class="mord">4</span><span class="mord">8</span></span></span></span> 个 tokens 传进 decode-only Transformer (只有 19M) 并输出 Action tokens.</p>
+<p>因为机器人模型的特殊性，所以我们需要关注 Inference Speed. 模型通过 TokenLearners 减少 token 数，同时 reuse 已经计算过的 overlap 的部分来加速推理。</p>
+<h2 id="局限"><a class="markdownIt-Anchor" href="#局限"></a> 局限</h2>
+<ul>
+<li>由于是一个 imitation learning 方法，所以可能没法超越示范者。</li>
+<li>泛化性还只局限在见过的操作 &amp; 没见过的 combination，对于没有见过的操作还是无法泛化。</li>
+<li>任务范围较大，但却比较缺乏高精细操作（dexterous manipulation）</li>
+</ul>
+<h1 id="saycan"><a class="markdownIt-Anchor" href="#saycan"></a> SayCan</h1>
+<p><a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/646784935">zhihu</a></p>
+<p>需要通过 BC (Behavioral Cloning) / RL (Reinforcement Learning) 训练一个 Policy Model，用于将一个 “skill” 映射到机器人的具体行为（参数上的），顺便得到 Reward Model 作为 Affordance Model.</p>
+<p>遇到一个问题，先由 LLM 评估做某一个 skill 的可能性（对解决问题有没有用），然后用 Affordance Model 评估在当前 state 下完成 skill 动作的可能性，选择两者乘积的 max 作为 action，然后用 Policy Model 来执行 action.</p>
+<h1 id="rt-2"><a class="markdownIt-Anchor" href="#rt-2"></a> RT-2</h1>
+<p>RT-1 只训练了机器人演示数据，RT-2 中加入了 VQA 问题的大量数据，从而使得其具有了更强的泛化能力，以及更好地利用 PaLM-E 等 LLM 的推理能力。</p>
+<p>在 PaLI-X 或者 PaLM-E 上做 co-fine-tuning，把 VQA 问题和机器人数据一起 fine-tune，给机器人数据大一点的权重（因为数据少一点）</p>
+<p>然后这个模型是部署在云服务上的。</p>
+<p>还可以结合 CoT prompting 方法，“这提示我们高层的任务规划 &amp; 低层的运动规划，现在或许可以用一个 VLA 模型解决了” (那是不是就不需要 SayCan 了呢？)</p>
+<p>RT-2 是一个真正的 VLA (Vision-Language Action Model)，它将视觉、语言、动作统一起来。</p>
+<p><a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/647436411">zhihu</a></p>
+<h2 id="局限-2"><a class="markdownIt-Anchor" href="#局限-2"></a> 局限</h2>
+<ul>
+<li>机器人会做的 motion 还是局限在机器人数据中，他还是不会那些数据中没有的 Physical Skills (作者认为这是因为机器人数据在 skills 的多样性上还不足)</li>
+<li>computation cost is high.</li>
+</ul>
+<blockquote>
+<p>怎么能让模型泛化到更多样的 Physical Skills 呢？</p>
+</blockquote>
+<h1 id="rt-trajectory"><a class="markdownIt-Anchor" href="#rt-trajectory"></a> RT-Trajectory</h1>
+<img src="/AI/%E3%80%90%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%E3%80%91%E7%BB%8F%E5%85%B8%E8%AE%BA%E6%96%87/RT-Trajectory.png" class="" title="RT-Trajectory">
+<p><a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/677628214">zhihu</a></p>
+<p>提出了一种 trajectory-conditioned 的模型，在输入中加入任务的期望轨迹。</p>
+<p>轨道标签中包含：</p>
+<ul>
+<li>2D 的轨迹；</li>
+<li>颜色梯度：用颜色、透明度来表示轨迹的时序信息，包括速度和方向等信息（还可以表示 3D 深度的信息）</li>
+<li>交互标志：用一些方法表示机械臂正在抓取等</li>
+</ul>
+<p>使用类似 RT-1 的模型架构，但是因为没有自然语言输入，所以不需要 FiLM.</p>
+<p>上图中第三种轨迹生成方式中，是要么用 LLM 生成代码再得到轨迹 / VLM 直接生成轨迹。</p>
+<h2 id="效果"><a class="markdownIt-Anchor" href="#效果"></a> 效果</h2>
+<p>发现在第一帧相同的时候，使用不同的轨迹标签时，机器人的表现是有差异的。</p>
+<p>但是其在真实场景下的泛化能力很不错。为什么？“作者认为新任务的轨迹一定程度上是训练集轨迹的组合，确实也体现了模型在轨迹上的泛化能力。”</p>
+<p>谜思：感觉基于轨迹来做会比基于 LLM / VLM 做高层规划要牛一点啊，或者说用 LLM / VLM 做高层规划，再通过单步规划生成轨迹，最后提供给机器人，会不会更好？</p>
+<h1 id="autort"><a class="markdownIt-Anchor" href="#autort"></a> AutoRT</h1>
+<p>一套让机器人自己自动化采集数据的方法。</p>
+<p>哎哟，感觉不是很好玩，先鸽。</p>
+<h1 id="roboflamingo"><a class="markdownIt-Anchor" href="#roboflamingo"></a> RoboFlamingo</h1>
+<p><a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/665261893">zhihu</a></p>
+<p>用了开源的 VL 模型，使用一个 Feature Fusion Decoder 来融合多模态信息，接下来接一个 Policy Head 来解析成 Actions.</p>
+<img src="/AI/%E3%80%90%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%E3%80%91%E7%BB%8F%E5%85%B8%E8%AE%BA%E6%96%87/RoboFlamingo.png" class="" title="RoboFlamingo">
+<p>这里的 Policy Head 尝试了 MLP w/o hist, MLP w/ hist, LSTM, Transformer 等结构。结论是需要时序信息，然后 MLP w/ hist &lt; LSTM <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo>≈</mo></mrow><annotation encoding="application/x-tex">\approx</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.48312em;vertical-align:0em;"></span><span class="mrel">≈</span></span></span></span> Transformer，为了简洁使用 LSTM.</p>
+<p>也就是说前面的 encoder 都是 freeze 的，而且直接使用的 ViT 实际上是没有直接处理时序信息的能力的。所有的时序信息都在 Policy Head 中保存。</p>
+<h1 id="openvla"><a class="markdownIt-Anchor" href="#openvla"></a> OpenVLA</h1>
+<p><a target="_blank" rel="noopener" href="https://blog.csdn.net/weixin_43827285/article/details/140188383">CSDN</a></p>
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/AI/" rel="tag"># AI</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/AI/%E3%80%90%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%E3%80%91%E6%9D%8E%E5%AE%8F%E6%AF%85%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/" rel="prev" title="【学习笔记】李宏毅机器学习">
+                  <i class="fa fa-angle-left"></i> 【学习笔记】李宏毅机器学习
+                </a>
+            </div>
+            <div class="post-nav-item">
+                <a href="/Math/%E3%80%90%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%E3%80%91%E6%95%B0%E5%AD%A6%E8%A7%84%E5%88%92/" rel="next" title="【学习笔记】数学规划">
+                  【学习笔记】数学规划 <i class="fa fa-angle-right"></i>
+                </a>
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+  <div class="copyright">
+    &copy; 
+    <span itemprop="copyrightYear">2025</span>
+    <span class="with-love">
+      <i class="fa fa-heart"></i>
+    </span>
+    <span class="author" itemprop="copyrightHolder">Xuanyu Chu</span>
+  </div>
+  <div class="powered-by">Powered by <a href="https://hexo.io/" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/muse/" rel="noopener" target="_blank">NexT.Muse</a>
+  </div>
+
+    </div>
+  </footer>
+
+  
+  <div class="toggle sidebar-toggle" role="button">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+  <div class="sidebar-dimmer"></div>
+  <div class="back-to-top" role="button" aria-label="Back to top">
+    <i class="fa fa-arrow-up fa-lg"></i>
+    <span>0%</span>
+  </div>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
+<script src="/js/comments.js"></script><script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/sidebar.js"></script><script src="/js/next-boot.js"></script>
+
+  
+
+
+
+
+
+
+  
+
+
+
+
+  
+
+  <script class="next-config" data-name="enableMath" type="application/json">false</script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.9/katex.min.css" integrity="sha256-UF1fgpAiu3tPJN/uCqEUHNe7pnr+QR0SQDNfgglgtcM=" crossorigin="anonymous">
+
+
+
+</body>
+</html>

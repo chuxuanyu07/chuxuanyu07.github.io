@@ -1,0 +1,336 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222"><meta name="generator" content="Hexo 7.3.0">
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/my_favicon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/my_favicon-32x32.ico">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/my_favicon-16x16.ico">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" integrity="sha256-dABdfBfUoC8vJUBOwGVdm8L9qlMWaHTIfXt+7GnZCIo=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"example.com","root":"/","images":"/images","scheme":"Muse","darkmode":false,"version":"8.22.0","exturl":false,"sidebar":{"position":"left","width_expanded":320,"width_dual_column":240,"display":"post","padding":18,"offset":12},"hljswrap":true,"copycode":{"enable":false,"style":null},"fold":{"enable":false,"height":500},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"duration":200,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"i18n":{"placeholder":"Searching...","empty":"We didn't find any results for the search: ${query}","hits_time":"${hits} results found in ${time} ms","hits":"${hits} results found"}}</script><script src="/js/config.js"></script>
+
+    <meta name="description" content="又开新坑了 这里是 CXY07\texttt{CXY07}CXY07 的考试总结 LIST\texttt{LIST}LIST，主要记录每次考试犯的错误和题解。 现一次考试有 333 个板块：[错误]，[部分正解]，[总结] (new\text{new}new)，其中总结部分新加入，前面的考试里随缘补。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="考试 LIST">
+<meta property="og:url" content="http://example.com/OI/%E8%80%83%E8%AF%95-LIST/index.html">
+<meta property="og:site_name" content="CXY07&#39;s Blog">
+<meta property="og:description" content="又开新坑了 这里是 CXY07\texttt{CXY07}CXY07 的考试总结 LIST\texttt{LIST}LIST，主要记录每次考试犯的错误和题解。 现一次考试有 333 个板块：[错误]，[部分正解]，[总结] (new\text{new}new)，其中总结部分新加入，前面的考试里随缘补。">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2020-09-10T12:10:00.000Z">
+<meta property="article:modified_time" content="2025-03-10T01:52:41.879Z">
+<meta property="article:author" content="Xuanyu Chu">
+<meta property="article:tag" content="OI-List">
+<meta name="twitter:card" content="summary">
+
+
+<link rel="canonical" href="http://example.com/OI/%E8%80%83%E8%AF%95-LIST/">
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"en","comments":true,"permalink":"http://example.com/OI/%E8%80%83%E8%AF%95-LIST/","path":"OI/考试-LIST/","title":"考试 LIST"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>考试 LIST | CXY07's Blog</title>
+  
+
+
+
+
+
+
+
+
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <div class="column">
+      <header class="header" itemscope itemtype="http://schema.org/WPHeader"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="Toggle navigation bar" role="button">
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <p class="site-title">CXY07's Blog</p>
+      <i class="logo-line"></i>
+    </a>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger" aria-label="Search" role="button">
+    </div>
+  </div>
+</div>
+
+
+
+
+
+
+
+</header>
+        
+  
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-overview-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          Table of Contents
+        </li>
+        <li class="sidebar-nav-overview">
+          Overview
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">Xuanyu Chu</p>
+  <div class="site-description" itemprop="description"></div>
+</div>
+<div class="site-state-wrap animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        <a href="/archives/">
+          <span class="site-state-item-count">13</span>
+          <span class="site-state-item-name">posts</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+        <span class="site-state-item-count">3</span>
+        <span class="site-state-item-name">categories</span>
+      </div>
+      <div class="site-state-item site-state-tags">
+        <span class="site-state-item-count">7</span>
+        <span class="site-state-item-name">tags</span>
+      </div>
+  </nav>
+</div>
+
+        </div>
+      </div>
+    </div>
+
+    
+  </aside>
+
+
+    </div>
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="en">
+    <link itemprop="mainEntityOfPage" href="http://example.com/OI/%E8%80%83%E8%AF%95-LIST/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Xuanyu Chu">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="CXY07's Blog">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="考试 LIST | CXY07's Blog">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          考试 LIST
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">Posted on</span>
+
+      <time title="Created: 2020-09-10 20:10:00" itemprop="dateCreated datePublished" datetime="2020-09-10T20:10:00+08:00">2020-09-10</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">Edited on</span>
+      <time title="Modified: 2025-03-10 09:52:41" itemprop="dateModified" datetime="2025-03-10T09:52:41+08:00">2025-03-10</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">In</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/OI/" itemprop="url" rel="index"><span itemprop="name">OI</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody"><p><s>又开新坑了</s></p>
+<p>这里是 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mtext mathvariant="monospace">CXY07</mtext></mrow><annotation encoding="application/x-tex">\texttt{CXY07}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.61111em;vertical-align:0em;"></span><span class="mord text"><span class="mord texttt">CXY07</span></span></span></span></span> 的考试总结 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mtext mathvariant="monospace">LIST</mtext></mrow><annotation encoding="application/x-tex">\texttt{LIST}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.61111em;vertical-align:0em;"></span><span class="mord text"><span class="mord texttt">LIST</span></span></span></span></span>，主要记录每次考试犯的错误和题解。</p>
+<p>现一次考试有 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>3</mn></mrow><annotation encoding="application/x-tex">3</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.64444em;vertical-align:0em;"></span><span class="mord">3</span></span></span></span> 个板块：[错误]，[部分正解]，[总结] (<span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mtext>new</mtext></mrow><annotation encoding="application/x-tex">\text{new}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.43056em;vertical-align:0em;"></span><span class="mord text"><span class="mord">new</span></span></span></span></span>)，其中总结部分新加入，前面的考试里随缘补。</p>
+<span id="more"></span>
+<p>多数题都是已经考场写完或考后更正完的，因此会写得很简洁 <s>到看不懂那种程度</s></p>
+<p>题目如果难度较大，可能会出现咕咕咕的情况，别问，问就是菜。</p>
+<p>题目懒得写，都在文件夹里。</p>
+<p>由于发现文章过长会出现各种各样奇怪的问题，所以现在每一个月开一篇新的，这里作为一个目录。</p>
+<p><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mtext mathvariant="monospace">Link</mtext></mrow><annotation encoding="application/x-tex">\texttt{Link}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.61111em;vertical-align:0em;"></span><span class="mord text"><span class="mord texttt">Link</span></span></span></span></span></p>
+<p><a target="_blank" rel="noopener" href="https://chuxuanyu07.github.io/OI/%E8%80%83%E8%AF%95-LIST-2020-09/"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mtext mathvariant="monospace">考试</mtext><mtext> </mtext><mtext mathvariant="monospace">LIST</mtext><mtext> </mtext><mtext mathvariant="monospace">[2020.09]</mtext></mrow><annotation encoding="application/x-tex">\texttt{考试 LIST [2020.09]}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.77777em;vertical-align:-0.08333em;"></span><span class="mord text"><span class="mord texttt cjk_fallback">考试</span><span class="mord texttt"> LIST [2020.09]</span></span></span></span></span></a></p>
+<p><a target="_blank" rel="noopener" href="https://chuxuanyu07.github.io/OI/%E8%80%83%E8%AF%95-LIST-2020-10/"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mtext mathvariant="monospace">考试</mtext><mtext> </mtext><mtext mathvariant="monospace">LIST</mtext><mtext> </mtext><mtext mathvariant="monospace">[2020.10]</mtext></mrow><annotation encoding="application/x-tex">\texttt{考试 LIST [2020.10]}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.77777em;vertical-align:-0.08333em;"></span><span class="mord text"><span class="mord texttt cjk_fallback">考试</span><span class="mord texttt"> LIST [2020.10]</span></span></span></span></span></a></p>
+<p><a target="_blank" rel="noopener" href="https://chuxuanyu07.github.io/OI/%E8%80%83%E8%AF%95-LIST-2020-11/"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mtext mathvariant="monospace">考试</mtext><mtext> </mtext><mtext mathvariant="monospace">LIST</mtext><mtext> </mtext><mtext mathvariant="monospace">[2020.11]</mtext></mrow><annotation encoding="application/x-tex">\texttt{考试 LIST [2020.11]}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.77777em;vertical-align:-0.08333em;"></span><span class="mord text"><span class="mord texttt cjk_fallback">考试</span><span class="mord texttt"> LIST [2020.11]</span></span></span></span></span></a></p>
+<p><a target="_blank" rel="noopener" href="https://chuxuanyu07.github.io/OI/%E8%80%83%E8%AF%95-LIST-2020-12/"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mtext mathvariant="monospace">考试</mtext><mtext> </mtext><mtext mathvariant="monospace">LIST</mtext><mtext> </mtext><mtext mathvariant="monospace">[2020.12]</mtext></mrow><annotation encoding="application/x-tex">\texttt{考试 LIST [2020.12]}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.77777em;vertical-align:-0.08333em;"></span><span class="mord text"><span class="mord texttt cjk_fallback">考试</span><span class="mord texttt"> LIST [2020.12]</span></span></span></span></span></a> （数据丢失导致 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>2020.12.20</mn></mrow><annotation encoding="application/x-tex">2020.12.20</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.64444em;vertical-align:0em;"></span><span class="mord">2</span><span class="mord">0</span><span class="mord">2</span><span class="mord">0</span><span class="mord">.</span><span class="mord">1</span><span class="mord">2</span><span class="mord">.</span><span class="mord">2</span><span class="mord">0</span></span></span></span> 日之后的部分被删除）</p>
+<p><a target="_blank" rel="noopener" href="https://chuxuanyu07.github.io/OI/%E8%80%83%E8%AF%95-LIST-2021-01/"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mtext mathvariant="monospace">考试</mtext><mtext> </mtext><mtext mathvariant="monospace">LIST</mtext><mtext> </mtext><mtext mathvariant="monospace">[2021.01]</mtext></mrow><annotation encoding="application/x-tex">\texttt{考试 LIST [2021.01]}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.77777em;vertical-align:-0.08333em;"></span><span class="mord text"><span class="mord texttt cjk_fallback">考试</span><span class="mord texttt"> LIST [2021.01]</span></span></span></span></span></a> （数据丢失导致 <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>2021.01.03</mn></mrow><annotation encoding="application/x-tex">2021.01.03</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.64444em;vertical-align:0em;"></span><span class="mord">2</span><span class="mord">0</span><span class="mord">2</span><span class="mord">1</span><span class="mord">.</span><span class="mord">0</span><span class="mord">1</span><span class="mord">.</span><span class="mord">0</span><span class="mord">3</span></span></span></span> 日之前的部分被删除）</p>
+<p><a target="_blank" rel="noopener" href="https://chuxuanyu07.github.io/OI/%E8%80%83%E8%AF%95-LIST-2021-02/"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mtext mathvariant="monospace">考试</mtext><mtext> </mtext><mtext mathvariant="monospace">LIST</mtext><mtext> </mtext><mtext mathvariant="monospace">[2021.02]</mtext></mrow><annotation encoding="application/x-tex">\texttt{考试 LIST [2021.02]}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.77777em;vertical-align:-0.08333em;"></span><span class="mord text"><span class="mord texttt cjk_fallback">考试</span><span class="mord texttt"> LIST [2021.02]</span></span></span></span></span></a></p>
+<p><a target="_blank" rel="noopener" href="https://www.cxy07.blog/index.php/archives/92/"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mtext mathvariant="monospace">考试</mtext><mtext> </mtext><mtext mathvariant="monospace">LIST</mtext><mtext> </mtext><mtext mathvariant="monospace">[2021.03]</mtext></mrow><annotation encoding="application/x-tex">\texttt{考试 LIST [2021.03]}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.77777em;vertical-align:-0.08333em;"></span><span class="mord text"><span class="mord texttt cjk_fallback">考试</span><span class="mord texttt"> LIST [2021.03]</span></span></span></span></span></a></p>
+<p><a target="_blank" rel="noopener" href="https://www.cxy07.blog/index.php/archives/101/"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mtext mathvariant="monospace">考试</mtext><mtext> </mtext><mtext mathvariant="monospace">LIST</mtext><mtext> </mtext><mtext mathvariant="monospace">[2021.04]</mtext></mrow><annotation encoding="application/x-tex">\texttt{考试 LIST [2021.04]}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.77777em;vertical-align:-0.08333em;"></span><span class="mord text"><span class="mord texttt cjk_fallback">考试</span><span class="mord texttt"> LIST [2021.04]</span></span></span></span></span></a></p>
+<p><a target="_blank" rel="noopener" href="https://www.cxy07.blog/index.php/archives/107/"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mtext mathvariant="monospace">考试</mtext><mtext> </mtext><mtext mathvariant="monospace">LIST</mtext><mtext> </mtext><mtext mathvariant="monospace">[2021.05]</mtext></mrow><annotation encoding="application/x-tex">\texttt{考试 LIST [2021.05]}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.77777em;vertical-align:-0.08333em;"></span><span class="mord text"><span class="mord texttt cjk_fallback">考试</span><span class="mord texttt"> LIST [2021.05]</span></span></span></span></span></a></p>
+<p><a target="_blank" rel="noopener" href="https://www.cxy07.blog/index.php/archives/111/"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mtext mathvariant="monospace">考试</mtext><mtext> </mtext><mtext mathvariant="monospace">LIST</mtext><mtext> </mtext><mtext mathvariant="monospace">[2021.06]</mtext></mrow><annotation encoding="application/x-tex">\texttt{考试 LIST [2021.06]}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.77777em;vertical-align:-0.08333em;"></span><span class="mord text"><span class="mord texttt cjk_fallback">考试</span><span class="mord texttt"> LIST [2021.06]</span></span></span></span></span></a></p>
+<p><a target="_blank" rel="noopener" href="https://www.cxy07.blog/index.php/archives/117/"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mtext mathvariant="monospace">考试</mtext><mtext> </mtext><mtext mathvariant="monospace">LIST</mtext><mtext> </mtext><mtext mathvariant="monospace">[2021.08]</mtext></mrow><annotation encoding="application/x-tex">\texttt{考试 LIST [2021.08]}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.77777em;vertical-align:-0.08333em;"></span><span class="mord text"><span class="mord texttt cjk_fallback">考试</span><span class="mord texttt"> LIST [2021.08]</span></span></span></span></span></a></p>
+<p><a target="_blank" rel="noopener" href="https://www.cxy07.blog/index.php/archives/132/"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mtext mathvariant="monospace">考试</mtext><mtext> </mtext><mtext mathvariant="monospace">LIST</mtext><mtext> </mtext><mtext mathvariant="monospace">[2021.09]</mtext></mrow><annotation encoding="application/x-tex">\texttt{考试 LIST [2021.09]}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.77777em;vertical-align:-0.08333em;"></span><span class="mord text"><span class="mord texttt cjk_fallback">考试</span><span class="mord texttt"> LIST [2021.09]</span></span></span></span></span></a></p>
+<p><a target="_blank" rel="noopener" href="https://www.cxy07.blog/index.php/archives/214/"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mtext mathvariant="monospace">考试</mtext><mtext> </mtext><mtext mathvariant="monospace">LIST</mtext><mtext> </mtext><mtext mathvariant="monospace">[2021.10]</mtext></mrow><annotation encoding="application/x-tex">\texttt{考试 LIST [2021.10]}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.77777em;vertical-align:-0.08333em;"></span><span class="mord text"><span class="mord texttt cjk_fallback">考试</span><span class="mord texttt"> LIST [2021.10]</span></span></span></span></span></a></p>
+<p><a target="_blank" rel="noopener" href="https://www.cxy07.blog/index.php/archives/288/"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mtext mathvariant="monospace">考试</mtext><mtext> </mtext><mtext mathvariant="monospace">LIST</mtext><mtext> </mtext><mtext mathvariant="monospace">[2021.11]</mtext></mrow><annotation encoding="application/x-tex">\texttt{考试 LIST [2021.11]}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.77777em;vertical-align:-0.08333em;"></span><span class="mord text"><span class="mord texttt cjk_fallback">考试</span><span class="mord texttt"> LIST [2021.11]</span></span></span></span></span></a></p>
+<p><a target="_blank" rel="noopener" href="https://www.cxy07.blog/index.php/archives/393/"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mtext mathvariant="monospace">考试</mtext><mtext> </mtext><mtext mathvariant="monospace">LIST</mtext><mtext> </mtext><mtext mathvariant="monospace">[2021.12]</mtext></mrow><annotation encoding="application/x-tex">\texttt{考试 LIST [2021.12]}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.77777em;vertical-align:-0.08333em;"></span><span class="mord text"><span class="mord texttt cjk_fallback">考试</span><span class="mord texttt"> LIST [2021.12]</span></span></span></span></span></a></p>
+<p><a target="_blank" rel="noopener" href="https://www.cxy07.blog/index.php/archives/434/"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mtext mathvariant="monospace">考试</mtext><mtext> </mtext><mtext mathvariant="monospace">LIST</mtext><mtext> </mtext><mtext mathvariant="monospace">[2022.01]</mtext></mrow><annotation encoding="application/x-tex">\texttt{考试 LIST [2022.01]}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.77777em;vertical-align:-0.08333em;"></span><span class="mord text"><span class="mord texttt cjk_fallback">考试</span><span class="mord texttt"> LIST [2022.01]</span></span></span></span></span></a></p>
+<p><a target="_blank" rel="noopener" href="https://www.cxy07.blog/index.php/archives/464/"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mtext mathvariant="monospace">考试</mtext><mtext> </mtext><mtext mathvariant="monospace">LIST</mtext><mtext> </mtext><mtext mathvariant="monospace">[2022.02]</mtext></mrow><annotation encoding="application/x-tex">\texttt{考试 LIST [2022.02]}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.77777em;vertical-align:-0.08333em;"></span><span class="mord text"><span class="mord texttt cjk_fallback">考试</span><span class="mord texttt"> LIST [2022.02]</span></span></span></span></span></a></p>
+<p><a target="_blank" rel="noopener" href="https://www.cxy07.blog/index.php/archives/510/"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mtext mathvariant="monospace">考试</mtext><mtext> </mtext><mtext mathvariant="monospace">LIST</mtext><mtext> </mtext><mtext mathvariant="monospace">[2022.03]</mtext></mrow><annotation encoding="application/x-tex">\texttt{考试 LIST [2022.03]}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.77777em;vertical-align:-0.08333em;"></span><span class="mord text"><span class="mord texttt cjk_fallback">考试</span><span class="mord texttt"> LIST [2022.03]</span></span></span></span></span></a></p>
+<p><a target="_blank" rel="noopener" href="https://www.cxy07.blog/index.php/archives/544/"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mtext mathvariant="monospace">考试</mtext><mtext> </mtext><mtext mathvariant="monospace">LIST</mtext><mtext> </mtext><mtext mathvariant="monospace">[2022.05]</mtext></mrow><annotation encoding="application/x-tex">\texttt{考试 LIST [2022.05]}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.77777em;vertical-align:-0.08333em;"></span><span class="mord text"><span class="mord texttt cjk_fallback">考试</span><span class="mord texttt"> LIST [2022.05]</span></span></span></span></span></a></p>
+<p><a target="_blank" rel="noopener" href="https://www.cxy07.blog/index.php/archives/555/"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mtext mathvariant="monospace">考试</mtext><mtext> </mtext><mtext mathvariant="monospace">LIST</mtext><mtext> </mtext><mtext mathvariant="monospace">[2022.06]</mtext></mrow><annotation encoding="application/x-tex">\texttt{考试 LIST [2022.06]}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.77777em;vertical-align:-0.08333em;"></span><span class="mord text"><span class="mord texttt cjk_fallback">考试</span><span class="mord texttt"> LIST [2022.06]</span></span></span></span></span></a></p>
+<p><a target="_blank" rel="noopener" href="https://www.cxy07.blog/index.php/archives/589/"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mtext mathvariant="monospace">考试</mtext><mtext> </mtext><mtext mathvariant="monospace">LIST</mtext><mtext> </mtext><mtext mathvariant="monospace">[2022.07]</mtext></mrow><annotation encoding="application/x-tex">\texttt{考试 LIST [2022.07]}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.77777em;vertical-align:-0.08333em;"></span><span class="mord text"><span class="mord texttt cjk_fallback">考试</span><span class="mord texttt"> LIST [2022.07]</span></span></span></span></span></a></p>
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/OI-List/" rel="tag"># OI-List</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/OI/%E8%81%94%E8%B5%9B%E7%9C%9F%E9%A2%98-LIST/" rel="prev" title="联赛真题 LIST">
+                  <i class="fa fa-angle-left"></i> 联赛真题 LIST
+                </a>
+            </div>
+            <div class="post-nav-item">
+                <a href="/OI/%E3%80%90%E6%B8%B8%E8%AE%B0%E3%80%91CSP-S-2020-%E6%8A%B1%E7%81%B5%E8%AE%B0/" rel="next" title="【游记】CSP-S 2020 抱灵记">
+                  【游记】CSP-S 2020 抱灵记 <i class="fa fa-angle-right"></i>
+                </a>
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+  <div class="copyright">
+    &copy; 
+    <span itemprop="copyrightYear">2025</span>
+    <span class="with-love">
+      <i class="fa fa-heart"></i>
+    </span>
+    <span class="author" itemprop="copyrightHolder">Xuanyu Chu</span>
+  </div>
+  <div class="powered-by">Powered by <a href="https://hexo.io/" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/muse/" rel="noopener" target="_blank">NexT.Muse</a>
+  </div>
+
+    </div>
+  </footer>
+
+  
+  <div class="toggle sidebar-toggle" role="button">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+  <div class="sidebar-dimmer"></div>
+  <div class="back-to-top" role="button" aria-label="Back to top">
+    <i class="fa fa-arrow-up fa-lg"></i>
+    <span>0%</span>
+  </div>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
+<script src="/js/comments.js"></script><script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/sidebar.js"></script><script src="/js/next-boot.js"></script>
+
+  
+
+
+
+
+
+
+  
+
+
+
+
+  
+
+  <script class="next-config" data-name="enableMath" type="application/json">false</script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.9/katex.min.css" integrity="sha256-UF1fgpAiu3tPJN/uCqEUHNe7pnr+QR0SQDNfgglgtcM=" crossorigin="anonymous">
+
+
+
+</body>
+</html>
